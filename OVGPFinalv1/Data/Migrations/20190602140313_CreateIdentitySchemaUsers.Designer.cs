@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OVGPFinalv1.Data;
 
 namespace OVGPFinalv1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190602140313_CreateIdentitySchemaUsers")]
+    partial class CreateIdentitySchemaUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,51 +184,6 @@ namespace OVGPFinalv1.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("OVGPFinalv1.Models.Chat", b =>
-                {
-                    b.Property<int>("ChatId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("PersonName");
-
-                    b.Property<DateTime>("Posted");
-
-                    b.Property<string>("Text");
-
-                    b.HasKey("ChatId");
-
-                    b.ToTable("Chat");
-                });
-
-            modelBuilder.Entity("OVGPFinalv1.Models.Content", b =>
-                {
-                    b.Property<int>("ContentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte[]>("ContentFile");
-
-                    b.Property<string>("ContentType")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("ContentURL");
-
-                    b.Property<string>("NamePostedUser");
-
-                    b.Property<DateTime>("PostedDate");
-
-                    b.Property<string>("Text")
-                        .IsRequired();
-
-                    b.Property<string>("Title")
-                        .IsRequired();
-
-                    b.HasKey("ContentId");
-
-                    b.ToTable("Content");
                 });
 
             modelBuilder.Entity("OVGPFinalv1.Models.User", b =>

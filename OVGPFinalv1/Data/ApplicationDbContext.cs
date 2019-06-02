@@ -12,5 +12,9 @@ namespace OVGPFinalv1.Data
             : base(options)
         {
         }
+        public DbSet<OVGPFinalv1.Models.User> User { get; set; }
+        public DbSet<OVGPFinalv1.Models.Content> Content { get; set; }
+
+        public DbSet<OVGPFinalv1.Models.Chat> Chat { get; set; }
     }
 }

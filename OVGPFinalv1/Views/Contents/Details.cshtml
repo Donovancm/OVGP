@@ -1,0 +1,66 @@
+﻿@model OVGPFinalv1.Models.Content
+{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Content</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PostedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PostedDate)
+        </dd>
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.NamePostedUser)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.NamePostedUser)
+            </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContentType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContentType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContentURL)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.ContentURL != null && Model.ContentType == "VID")
+            {
+                <iframe class="embed-responsive-item" src="@Model.ContentURL" width="480" height="240" frameborder="0" allowfullscreen></iframe>
+            }
+            else if (Model.ContentURL != null && Model.ContentType == "IMG")
+            {
+                <object data="@Model.ContentURL" class="embed-responsive-item" width="480" height="270"></object>
+            }
+        </dd>
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ContentFile)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ContentFile)
+            </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ContentId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
