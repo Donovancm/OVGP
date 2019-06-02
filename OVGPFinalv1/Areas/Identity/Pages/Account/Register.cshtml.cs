@@ -40,6 +40,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            public string Voornaam { get; set; }
+            [Required]
+            public string Achternaam { get; set; }
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
