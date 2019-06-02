@@ -28,7 +28,7 @@
                 <div class="card col-md-5 bg-light" id="btn_card1_card">
                     @if (item.ContentURL == null)
                     {
-                        <iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>
+                        @*<iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>*@
                         <object data="~/Images/placeholder.png" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
                     }
                     else if (item.ContentURL != null && item.ContentType == "VID")
