@@ -23,7 +23,7 @@
         @*@Html.Partial("~/Views/Shared/_Contents.cshtml", new Content())
             @{Html.RenderPartial("~/Views/Shared/_Contents.cshtml", new Content());}*@
         <div class="row justify-content-center" style="margin-top:30px;">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Reverse())
             {
                 <div class="card col-md-5 bg-light" id="btn_card1_card">
                     @if (item.ContentURL == null)

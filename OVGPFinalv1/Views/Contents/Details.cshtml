@@ -1,5 +1,5 @@
 ﻿@model OVGPFinalv1.Models.Content
-{
+@{
     ViewData["Title"] = "Details";
 }
 
@@ -62,5 +62,6 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ContentId">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.ContentId">Delete</a> |
     <a asp-action="Index">Back to List</a>
 </div>
