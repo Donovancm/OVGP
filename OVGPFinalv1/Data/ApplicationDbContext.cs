@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1.Data
 {
@@ -16,5 +17,7 @@ namespace OVGPFinalv1.Data
         public DbSet<OVGPFinalv1.Models.Content> Content { get; set; }
 
         public DbSet<OVGPFinalv1.Models.Chat> Chat { get; set; }
+
+        public DbSet<OVGPFinalv1.Models.Agenda> Agenda { get; set; }
     }
 }
