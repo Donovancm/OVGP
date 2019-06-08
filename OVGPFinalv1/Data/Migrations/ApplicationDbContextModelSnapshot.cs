@@ -73,6 +73,9 @@ namespace OVGPFinalv1.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -112,6 +115,8 @@ namespace OVGPFinalv1.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -231,27 +236,24 @@ namespace OVGPFinalv1.Data.Migrations
 
             modelBuilder.Entity("OVGPFinalv1.Models.User", b =>
                 {
-                    b.Property<int>("PersonId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Adres")
+                        .IsRequired();
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Bedrijf")
+                        .IsRequired();
 
-                    b.Property<string>("Land");
+                    b.Property<string>("ContactPersoon")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Plaats")
+                        .IsRequired();
 
-                    b.Property<string>("Postcode");
+                    b.Property<string>("Postcode")
+                        .IsRequired();
 
-                    b.Property<string>("Stad");
-
-                    b.Property<int>("TelefoonNummer");
-
-                    b.HasKey("PersonId");
-
-                    b.ToTable("User");
+                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

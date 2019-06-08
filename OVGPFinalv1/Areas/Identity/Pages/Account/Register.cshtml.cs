@@ -15,14 +15,14 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<Models.User> _signInManager;
+        private readonly UserManager<Models.User> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Models.User> userManager,
+            SignInManager<Models.User> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -40,9 +40,25 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            public string Voornaam { get; set; }
+            [DataType(DataType.Text)]
+            [Display(Name = "Full name")]
+            public string Bedrijf { get; set; }
             [Required]
-            public string Achternaam { get; set; }
+            [DataType(DataType.Text)]
+            [Display(Name = "Contact persoon")]
+            public string ContactPersoon { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Adres")]
+            public string Adres { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Postcode")]
+            public string PostCode { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Plaats")]
+            public string Plaats { get; set; }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -70,7 +86,15 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Models.User {
+                    Bedrijf = Input.Bedrijf,
+                    ContactPersoon = Input.ContactPersoon,
+                    Adres = Input.Adres,
+                    Postcode = Input.PostCode,
+                    Plaats = Input.Plaats,
+                    UserName = Input.Email,
+                    Email = Input.Email
+                };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

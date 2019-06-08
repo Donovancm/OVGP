@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace OVGPFinalv1.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int PersonId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Stad { get; set; }
-        public string Land { get; set; }
+        [Required]
+        [PersonalData]
+        public string Bedrijf { get; set; }
+        [Required]
+        [PersonalData]
+        public string ContactPersoon { get; set; }
+        [Required]
+        [PersonalData]
+        public string Adres { get; set; }
+        [Required]
+        [PersonalData]
         public string Postcode { get; set; }
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-        public int TelefoonNummer { get; set; }
+        [Required]
+        [PersonalData]
+        public string Plaats { get; set; }
     }
 }

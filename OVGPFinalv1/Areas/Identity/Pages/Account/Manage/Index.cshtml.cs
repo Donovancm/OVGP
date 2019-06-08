@@ -13,13 +13,13 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<Models.User> _userManager;
+        private readonly SignInManager<Models.User> _signInManager;
         private readonly IEmailSender _emailSender;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Models.User> userManager,
+            SignInManager<Models.User> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -40,12 +40,32 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            [DataType(DataType.Text)]
+            [Display(Name = "Bedrijfsnaam")]
+            public string Bedrijf { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Contact persoon")]
+            public string ContactPersoon { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Adres")]
+            public string Adres { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Postcode")]
+            public string PostCode { get; set; }
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Plaats")]
+            public string Plaats { get; set; }
 
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefoonnummer")]
             public string PhoneNumber { get; set; }
+            [Required]
+            [EmailAddress]
+            public string Email { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -64,6 +84,11 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                Bedrijf = user.Bedrijf,
+                ContactPersoon = user.ContactPersoon,
+                Adres = user.Adres,
+                PostCode = user.Postcode,
+                Plaats = user.Plaats,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -79,8 +104,27 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             {
                 return Page();
             }
-
             var user = await _userManager.GetUserAsync(User);
+            if (Input.Bedrijf != user.Bedrijf)
+            {
+                user.Bedrijf = Input.Bedrijf;
+            }
+            if (Input.ContactPersoon != user.ContactPersoon)
+            {
+                user.ContactPersoon = Input.ContactPersoon;
+            }
+            if (Input.Adres != user.Adres)
+            {
+                user.Adres = Input.Adres;
+            }
+            if (Input.PostCode != user.Postcode)
+            {
+                user.Postcode = Input.PostCode;
+            }
+            if (Input.Plaats != user.Plaats)
+            {
+                user.Plaats = Input.Plaats;
+            }
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -107,7 +151,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
-
+            await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
