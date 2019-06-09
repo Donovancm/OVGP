@@ -37,6 +37,10 @@ namespace OVGPFinalv1.Controllers
         {
             return View();
         }
+        public IActionResult ContactResult()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Contact(ContactFormModel model)
         {
@@ -52,7 +56,7 @@ namespace OVGPFinalv1.Controllers
                 };
 
                 EmailService.Send(msgToSend);
-                return RedirectToAction("Index");
+                return RedirectToAction("ContactResult");
             }
             else
             {
