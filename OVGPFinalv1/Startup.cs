@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using OVGPFinalv1.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OVGPFinalv1.Models.Email_Models;
+using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1
 {
@@ -41,6 +43,25 @@ namespace OVGPFinalv1
             services.AddDefaultIdentity<Models.User>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            EmailServerConfiguration config = new EmailServerConfiguration
+            {
+                //Testen met echte email werkt, nu een email maken
+                //Hotmail ....
+                SmtpPassword = "920PLM.AzE.bdc", //<---
+                SmtpServer = "smtp.live.com", //
+                SmtpUsername = "ovgpictlab@hotmail.com" //<---
+            };
+
+            EmailAddress FromEmailAddress = new EmailAddress
+            {
+                //Placeholder van wie zetten
+                //Hotmail ...
+                Address = "ovgpictlab@hotmail.com",//<-----
+                Name = "ICTlab"
+            };
+            services.AddSingleton<EmailServerConfiguration>(config);
+            services.AddTransient<IEmailService, MailKitEmailService>();
+            services.AddSingleton<EmailAddress>(FromEmailAddress);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddProgressiveWebApp();
