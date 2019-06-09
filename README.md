@@ -11,6 +11,8 @@ TODO:
 
 -Fix chatten
 
+-Toewijzen Identity roles op user
+
 -Frontend design
 
 -ENG --> Dutch
