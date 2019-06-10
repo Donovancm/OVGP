@@ -26,7 +26,7 @@
                             <time datetime="2009-11-13T20:00" class="">Timothy • 51 min</time>
                         </div>
                     </div>
-                    @foreach (var item in Model.Reverse())
+                    @foreach (var item in Model)
                     {
                         <div class="row msg_container base_sent">
                             <div class="col-10 col-10">
@@ -52,11 +52,13 @@
                     </div>
                 </div>
             </div>
+            @*@await Html.PartialAsync("/Views/Chats/Create.cshtml", new OVGPFinalv1.Models.Chat())*@
             <div class="panel-footer">
                 <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Schrijf hier uw bericht..."> <span class="input-group-btn">
-                        <a asp-action="Create"><button class="btn btn-primary btn-sm" id="btn-chat" style="margin-top:9px">Versturen</button></a>
-                    </span>
+                    @await Html.PartialAsync("/Views/Chats/Create.cshtml", new OVGPFinalv1.Models.Chat())
+                    @*<input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Schrijf hier uw bericht..."> <span class="input-group-btn">
+            <a asp-action="Create"><button class="btn btn-primary btn-sm" id="btn-chat" style="margin-top:9px">Versturen</button></a>
+        </span>*@
 
                 </div>
             </div>
