@@ -24,7 +24,7 @@ namespace OVGPFinalv1.Controllers
         // GET: Contents
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Content.ToListAsync());
+            return View(await _context.Content.OrderBy(x => x.PostedDate).ToListAsync());
         }
 
         // GET: Contents/Details/5
