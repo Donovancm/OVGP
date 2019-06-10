@@ -16,13 +16,14 @@ namespace OVGPFinalv1.Models
 
         public int ContentId { get; set; }
         [Required]
+        [Display(Name = "Titel")]
         public string Title { get; set; }
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Beschrijving")]
         public string Text { get; set; }
-        [Display(Name = "Posted on")]
+        [Display(Name = "Gepost op")]
         public DateTime PostedDate { get; set; }
-        [Display(Name = "Posted by")]
+        [Display(Name = "Gepost Door")]
         public string NamePostedUser { get; set; }
 
         // IMG / VID
@@ -30,7 +31,7 @@ namespace OVGPFinalv1.Models
         [StringLength(3)]
         public string ContentType { get; set; }
         //Depends what file type it is, example PDF/URL/Cursus
-        [Display(Name = "Video or Image link")]
+        [Display(Name = "Video or afbeelding url")]
         public string ContentURL { get; set; }
         public byte[] ContentFile { get; set; }
     }

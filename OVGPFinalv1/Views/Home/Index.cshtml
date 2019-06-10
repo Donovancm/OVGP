@@ -5,8 +5,15 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
 
+    h3 {
+        color: #00BDF3;
+        text-align: center;
+    }
+</style>
 <div class="container">
+    <h3>Wie zijn wij?</h3>
     <div class="embed-responsive embed-responsive-16by9 top-space">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
     </div>
@@ -14,11 +21,12 @@
     <hr class="style1">
     <br>
 
-    <div class="add-btn text-center">
-        <a href="~/Contents/Create" class="addbtn">
-            <img style="width:200px;height:200px;" src="~/Images/add.png" />
-        </a>
-    </div>
+    @*<div class="add-btn text-center">
+            <a href="~/Contents/Create" class="addbtn">
+                <img style="width:200px;height:200px;" src="~/Images/add.png" />
+            </a>
+        </div>*@
+    <h3>Nieuws</h3>
     <div class="news-items">
         @*@Html.Partial("~/Views/Shared/_Contents.cshtml", new Content())
             @{Html.RenderPartial("~/Views/Shared/_Contents.cshtml", new Content());}*@

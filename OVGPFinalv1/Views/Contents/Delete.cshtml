@@ -4,12 +4,15 @@
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
 
-<h1>Delete</h1>
+    h3 {
+        color: #00BDF3;
+    }
+</style>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Verwijderen van nieuwsberichten</h3>
 <div>
-    <h4>Content</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -58,7 +61,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ContentId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Verwijderen" class="btn btn-danger" /> |
+        <a asp-action="Index">Terug naar nieuwspagina</a>
     </form>
 </div>

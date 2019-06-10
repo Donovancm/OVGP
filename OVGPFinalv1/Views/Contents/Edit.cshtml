@@ -5,9 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<style>
 
-<h4>Content</h4>
+    h3 {
+        color: #00BDF3;
+    }
+</style>
+
+<h3>Aanpassen nieuwsbericht</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,7 +21,9 @@
             <input type="hidden" asp-for="ContentId" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <p>
+                    <input asp-for="Title" class="form-control" />
+                </p>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -25,15 +32,15 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="PostedDate" class="control-label"></label>
-                <input asp-for="PostedDate" class="form-control" />
-                <span asp-validation-for="PostedDate" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="PostedDate" class="control-label"></label>
+                    <input asp-for="PostedDate" class="form-control" />
+                    <span asp-validation-for="PostedDate" class="text-danger"></span>
+                </div>*@
             @*<div class="form-group">
-                <label asp-for="NamePostedUser" class="control-label"></label>
-                <input asp-for="NamePostedUser" class="form-control" />
-                <span asp-validation-for="NamePostedUser" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="NamePostedUser" class="control-label"></label>
+                    <input asp-for="NamePostedUser" class="form-control" />
+                    <span asp-validation-for="NamePostedUser" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="ContentType" class="control-label"></label>
                 <input asp-for="ContentType" class="form-control" />
@@ -45,19 +52,19 @@
                 <span asp-validation-for="ContentURL" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="ContentFile" class="control-label"></label>
-                <input asp-for="ContentFile" class="form-control" />
-                <span asp-validation-for="ContentFile" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="ContentFile" class="control-label"></label>
+                    <input asp-for="ContentFile" class="form-control" />
+                    <span asp-validation-for="ContentFile" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Terug naar nieuwspagina</a>
 </div>
 
 @section Scripts {

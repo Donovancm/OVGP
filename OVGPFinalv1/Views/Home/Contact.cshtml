@@ -3,7 +3,13 @@
 @{
     ViewData["Title"] = "Contact";
 }
+<style>
 
+    h3 {
+        color: #00BDF3;
+        text-align: center;
+    }
+</style>
 <!--Section: Contact v.2-->
 <section class="mb-4">
 
@@ -11,10 +17,8 @@
     <h2 class="h1-responsive font-weight-bold text-center my-4">Hoe kunt u ons bereiken?</h2>
     <!--Section description-->
     <p class="w-responsive mx-auto mb-5">
-        Indien u nadere informatie wilt hebben over de vereniging kunt u de onderstaand formulier invullen en verzenden. 
-        Uw gegevens zullen vertrouwelijk behandeld worden en uitsluitend gebruikt worden voor de communicatie tussen u en de Ondernemersvereniging 's Gravelandsepolder.
+        Indien u nadere informatie wilt hebben over de vereniging kunt u de onderstaand formulier invullen en verzenden.
     </p>
-
     <div class="row">
 
         <!--Grid column-->
@@ -24,12 +28,16 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="col-md-6">
                         <label asp-for="Name" class="control-label">Naam</label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <p>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </p>
                     </div>
                     <div class="col-md-6">
                         <label asp-for="Email" class="control-label">Emailadres</label>
+                        <p>
                         <input asp-for="Email" class="form-control" />
+                        </p>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">

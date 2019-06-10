@@ -2,11 +2,14 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
 
-<h1>Details</h1>
-
+    h3 {
+        color: #00BDF3;
+    }
+</style>
+<h3>Informatie</h3>
 <div>
-    <h4>Content</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -61,7 +64,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ContentId">Edit</a> |
-    <a asp-action="Delete" asp-route-id="@Model.ContentId">Delete</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</a> |
+    <a asp-action="Delete" asp-route-id="@Model.ContentId">Verwijderen</a> |
+    <a asp-action="Index">Terug naar nieuwspagina</a>
 </div>

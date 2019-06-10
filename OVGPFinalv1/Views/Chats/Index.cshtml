@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<OVGPFinalv1.Models.Chat>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ondernemers chat";
 }
 
 <div class="container">
@@ -11,13 +11,13 @@
                 <div class="panel">
                     <div class="panel-heading top-bar rounder-top">
                         <div class="col-md-8 col-xs-8">
-                            <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span>Chat</h3>
+                            <h3 class="panel-title" style="color:aqua"><span class="glyphicon glyphicon-comment" ></span>Ondernemers chat</h3>
 
                         </div>
                     </div>
                 </div>
-                <div class="panel-body msg_container_base">
-                    <div class="row msg_container base_receive col-sm-10">
+                <div class="panel-body msg_container_base" style="overflow-y: scroll; height:500px;">
+                    @*<div class="row msg_container base_receive col-sm-10">
                         <div class="messages msg_receive">
                             <p>
                                 that mongodb thing looks good, huh? tiny master db, and huge document
@@ -25,7 +25,7 @@
                             </p>
                             <time datetime="2009-11-13T20:00" class="">Timothy • 51 min</time>
                         </div>
-                    </div>
+                    </div>*@
                     @foreach (var item in Model)
                     {
                         <div class="row msg_container base_sent">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     }
-                    <div class="row msg_container base_receive">
+                    @*<div class="row msg_container base_receive">
                         <div class="col-10 col-10">
                             <div class="messages msg_receive">
                                 <p>
@@ -49,7 +49,7 @@
                                 <time datetime="2009-11-13T20:00" class="">Timothy • 51 min</time>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
             @*@await Html.PartialAsync("/Views/Chats/Create.cshtml", new OVGPFinalv1.Models.Chat())*@

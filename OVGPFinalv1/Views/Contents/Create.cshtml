@@ -4,23 +4,29 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
 
-<h1>Create</h1>
+    h3 {
+        color: #00BDF3;
+    }
+</style>
 
-<h4>Content</h4>
+<h3>Aanmaken van Nieuwsbericht</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label asp-for="Title" class="control-label">Titel</label>
+                <p>
                 <input asp-for="Title" class="form-control" />
+                    </p>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
+                <label asp-for="Text" class="control-label">Beschrijving</label>
+                <input asp-for="Text" class="form-control"/>
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             @*<div class="form-group">
@@ -49,14 +55,14 @@
                 <span asp-validation-for="ContentFile" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Aanmaken" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Terug naar nieuwsberichten</a>
 </div>
 
 @section Scripts {
