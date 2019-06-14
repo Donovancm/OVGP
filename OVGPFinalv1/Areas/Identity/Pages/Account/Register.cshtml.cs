@@ -39,40 +39,40 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Bedrijfnaam is vereist")]
             [DataType(DataType.Text)]
             [Display(Name = "Full name")]
             public string Bedrijf { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Naam contact persoon vereist")]
             [DataType(DataType.Text)]
             [Display(Name = "Contact persoon")]
             public string ContactPersoon { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Adres nodig")]
             [DataType(DataType.Text)]
             [Display(Name = "Adres")]
             public string Adres { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Postcode vereist")]
             [DataType(DataType.Text)]
             [Display(Name = "Postcode")]
             public string PostCode { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Plaats vereist")]
             [DataType(DataType.Text)]
             [Display(Name = "Plaats")]
             public string Plaats { get; set; }
-            [Required]
+            [Required(ErrorMessage = "Geef valide email aan")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} moet tenminsten {2} en maximaal {1} karakters lang zijn.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Wachtwoord")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Bevestig wachtwoord")]
+            [Compare("Password", ErrorMessage = "Confirmatie wachtwoord en wachtwoord komen niet overeen")]
             public string ConfirmPassword { get; set; }
         }
 
