@@ -19,18 +19,18 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom box-shadow sb-navbar" style="margin-bottom: 20px;">
             <div class="container">
-                @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>*@
                 <a class="navbar-brand" href="/">
-                    <img src="~/Images/ovgpnew.png" width="260" height="70">
+                    <img src="~/Images/ovgpnew.png" width="224" height="90">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_target"
+                        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-md-inline-flex flex-md-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="collapse_target">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" id="nav-text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -38,8 +38,8 @@
                             <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
                         @*<li class="nav-item">
-            <a class="nav-link" id="nav-text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
+                    <a class="nav-link" id="nav-text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>*@
                         <li class="nav-item">
                             <a class="nav-link" id="nav-text" asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
                         </li>
@@ -47,9 +47,10 @@
                             <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contents" asp-action="Index">Nieuws</a>
                         </li>
                         @*<li class="nav-item">
-                            <a class="nav-link" id="nav-text" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
-                        </li>*@
+                    <a class="nav-link" id="nav-text" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
+                </li>*@
                         <partial name="_LoginPartial" /> @*<---- Login navigatie dingens*@
+
                     </ul>
                 </div>
             </div>
