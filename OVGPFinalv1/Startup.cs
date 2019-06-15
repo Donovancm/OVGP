@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OVGPFinalv1.Models.Email_Models;
 using OVGPFinalv1.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace OVGPFinalv1
 {
@@ -40,7 +41,8 @@ namespace OVGPFinalv1
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Models.User>()
+            services.AddDefaultIdentity<Models.User>(/*config2 => { config2.SignIn.RequireConfirmedEmail = true; }*/)
+                
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             EmailServerConfiguration config = new EmailServerConfiguration
@@ -59,10 +61,11 @@ namespace OVGPFinalv1
                 Address = "ovgpictlab@hotmail.com",//<-----
                 Name = "ICTlab"
             };
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<SmptConfig>(Configuration);
             services.AddSingleton<EmailServerConfiguration>(config);
             services.AddTransient<IEmailService, MailKitEmailService>();
             services.AddSingleton<EmailAddress>(FromEmailAddress);
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddProgressiveWebApp();
         }

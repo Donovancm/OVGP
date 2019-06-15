@@ -23,7 +23,7 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form asp-action="Contact" asp-controller="Home" method="POST">
+            <form asp-action="Index" asp-controller="Contact" method="POST">
                 <div class="row">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="col-md-6">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-md-6">
                         <label asp-for="Subject" class="control-label">Onderwerp</label>
-                        <input asp-for="Subject" class="form-control" />
+                        <input asp-for="Subject" class="form-control"/>
                         <span asp-validation-for="Subject" class="text-danger"></span>
                     </div>
                     <div class="col-md-12">

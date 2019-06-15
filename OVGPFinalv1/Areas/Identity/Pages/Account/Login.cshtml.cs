@@ -67,6 +67,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            //Verwijzen naar welkomstpagina
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
