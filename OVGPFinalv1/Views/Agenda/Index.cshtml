@@ -14,19 +14,6 @@
 
 @foreach (var item in Model)
 {
-
-    <script>
-        var
-            str = (@Html.DisplayFor(modelItem => item.StartDatum)),
-            parts = str.split('-'),
-            year = parseInt(parts[2], 10),
-            month = parseInt(parts[1], 10) - 1, // NB: month is zero-based!
-            day = parseInt(parts[0], 10),
-            date = new Date(year, month, day);
-
-        alert(date.getDate());
-    </script>
-
     <div class="container">
         <div class="row row-striped">
             <div class="col-2 text-right">
