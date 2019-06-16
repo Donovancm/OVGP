@@ -17,7 +17,9 @@ namespace OVGPFinalv1.Models
         }
         public int ChatId { get; set; }
         [Display(Name = "Naam")]
+        [Required]
         public string PersonName { get; set; }
+        [Required]
         public string Text { get; set; }
         [Display(Name = "Gepost Door")]
         public DateTime Posted { get; set; }
