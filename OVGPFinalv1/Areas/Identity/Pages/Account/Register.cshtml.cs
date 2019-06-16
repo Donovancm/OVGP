@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace OVGPFinalv1.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Beheerder")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<Models.User> _signInManager;
