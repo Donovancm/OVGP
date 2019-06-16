@@ -344,3 +344,12 @@ hr.style1 {
     margin-right: 5px;
 }
 
+#btn-nav {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+    #btn-nav:hover {
+        color: #00BDF3;
+    }
+
