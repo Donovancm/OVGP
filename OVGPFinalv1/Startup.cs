@@ -41,7 +41,7 @@ namespace OVGPFinalv1
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Models.User>(/*config2 => { config2.SignIn.RequireConfirmedEmail = true; }*/)
+            services.AddDefaultIdentity<Models.User>(config2 => { config2.SignIn.RequireConfirmedEmail = true; })
                 .AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

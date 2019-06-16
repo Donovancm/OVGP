@@ -72,7 +72,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Bevestig wachtwoord")]
-            [Compare("Password", ErrorMessage = "Confirmatie wachtwoord en wachtwoord komen niet overeen")]
+            [Compare("Password", ErrorMessage = "Komt niet overeen met de wachtwoord")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -107,8 +107,8 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                         values: new { userId = user.Id, code = code },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                     //   $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     //Prevent auto log in when registeren
                     ///
                     await _userManager.AddToRoleAsync(user, "Lid");
