@@ -12,7 +12,7 @@ using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1.Controllers
 {
-    [Authorize(Roles = "Lid")]
+    [Authorize]
     public class ChatsController : Controller
     {
         private readonly ApplicationDbContext _context;

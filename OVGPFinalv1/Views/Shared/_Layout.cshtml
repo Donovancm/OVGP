@@ -13,7 +13,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -37,18 +37,27 @@
                         <li class="nav-item">
                             <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                         </li>
+                        @if (User.IsInRole("Lid"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-text" asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contents" asp-action="Index">Nieuws</a>
+                            </li>
+                        }
+                        else if (User.IsInRole("Beheerder"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-text" asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contents" asp-action="Index">Nieuws</a>
+                            </li>
+                        }
                         @*<li class="nav-item">
-                    <a class="nav-link" id="nav-text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link" id="nav-text" asp-area="" asp-controller="Chats" asp-action="Index">Chat</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="nav-text" asp-area="" asp-controller="Contents" asp-action="Index">Nieuws</a>
-                        </li>
-                        @*<li class="nav-item">
-                    <a class="nav-link" id="nav-text" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
-                </li>*@
+                                <a class="nav-link" id="nav-text" asp-area="" asp-controller="Agenda" asp-action="Index">Agenda</a>
+                            </li>*@
                         <partial name="_LoginPartial" /> @*<---- Login navigatie dingens*@
 
                     </ul>
