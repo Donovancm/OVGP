@@ -9,51 +9,28 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tekst)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Label)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDatum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EindDatum)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tekst)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Label)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EindDatum)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AgendaId">Details</a> |
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="row row-striped">
+            <div class="col-2 text-right">
+                <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
+                <h2>OCT</h2>
+            </div>
+            <div class="col-10">
+                <h3 class="text-uppercase"><strong>@Html.DisplayFor(modelItem => item.Titel)</strong></h3>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.StartDatum)</li>
+                    <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.EindDatum)</li>
+                    <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.Label)</li>
+                </ul>
+                <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
+
+                <a asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
                 <a asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
-            </td>
-        </tr>
+            </div>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
