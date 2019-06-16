@@ -331,16 +331,16 @@ hr.style1 {
     width: 90%;
 }
 
-.row-striped:nth-of-type(odd) {
+.row-striped {
     background-color: #efefef;
     border-left: 4px #000000 solid;
-}
-
-.row-striped:nth-of-type(even) {
-    background-color: #ffffff;
-    border-left: 4px #efefef solid;
 }
 
 .row-striped {
     padding: 15px 0;
 }
+
+.m-right {
+    margin-right: 5px;
+}
+

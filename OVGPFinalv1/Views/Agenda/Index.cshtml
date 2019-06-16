@@ -4,14 +4,29 @@
     ViewData["Title"] = "Index";
 }
 
+
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
+
 @foreach (var item in Model)
 {
+
+    <script>
+        var
+            str = (@Html.DisplayFor(modelItem => item.StartDatum)),
+            parts = str.split('-'),
+            year = parseInt(parts[2], 10),
+            month = parseInt(parts[1], 10) - 1, // NB: month is zero-based!
+            day = parseInt(parts[0], 10),
+            date = new Date(year, month, day);
+
+        alert(date.getDate());
+    </script>
+
     <div class="container">
         <div class="row row-striped">
             <div class="col-2 text-right">
@@ -19,18 +34,19 @@
                 <h2>OCT</h2>
             </div>
             <div class="col-10">
-                <h3 class="text-uppercase"><strong>@Html.DisplayFor(modelItem => item.Titel)</strong></h3>
+                <h3 class="text-uppercase" style="color: black"><strong>@Html.DisplayFor(modelItem => item.Titel)</strong></h3>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.StartDatum)</li>
-                    <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.EindDatum)</li>
-                    <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.Label)</li>
+                    <li class="list-inline-item"><i class="m-right far fa-calendar-alt"></i>@Html.DisplayFor(modelItem => item.StartDatum)</li>
+                    <li class="list-inline-item"><i class="m-right far fa-clock"></i>@Html.DisplayFor(modelItem => item.EindDatum)</li>
+                    <li class="list-inline-item"><i class="m-right fas fa-tag"></i>@Html.DisplayFor(modelItem => item.Label)</li>
                 </ul>
                 <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
 
-                <a asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
+                <a class="m-right" asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
+                <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
+                <a class="m-right" asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
             </div>
         </div>
     </div>
+    <br />
 }
