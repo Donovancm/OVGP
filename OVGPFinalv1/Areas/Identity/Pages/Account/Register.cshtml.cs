@@ -93,7 +93,9 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     Postcode = Input.PostCode,
                     Plaats = Input.Plaats,
                     UserName = Input.Email,
-                    Email = Input.Email
+                    Email = Input.Email,
+                    //Voor nu true
+                    EmailConfirmed = true
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
