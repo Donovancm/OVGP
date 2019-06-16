@@ -42,7 +42,7 @@ namespace OVGPFinalv1
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Models.User>(/*config2 => { config2.SignIn.RequireConfirmedEmail = true; }*/)
-                
+                .AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             EmailServerConfiguration config = new EmailServerConfiguration

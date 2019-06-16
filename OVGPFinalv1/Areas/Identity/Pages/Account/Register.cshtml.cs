@@ -111,7 +111,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                     //Prevent auto log in when registeren
                     ///
-
+                    await _userManager.AddToRoleAsync(user, "Lid");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
