@@ -10,11 +10,14 @@
     }
 </style>
 <h3 class="text-center">Nieuws</h3>
-<div class="add-btn text-center">
-    <a href="~/Contents/Create" class="addbtn">
-        <img style="width:200px;height:200px;" src="~/Images/add.png" />
-    </a>
-</div>
+@if (User.IsInRole("Beheerder"))
+{
+    <div class="add-btn text-center">
+        <a href="~/Contents/Create" class="addbtn">
+            <img style="width:200px;height:200px;" src="~/Images/add.png" />
+        </a>
+    </div>
+}
 <div class="news-items">
     @*@Html.Partial("~/Views/Shared/_Contents.cshtml", new Content())
         @{Html.RenderPartial("~/Views/Shared/_Contents.cshtml", new Content());}*@

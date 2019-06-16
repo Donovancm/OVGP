@@ -46,6 +46,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Contents/Create
+        [Authorize(Roles = "Beheerder")]
         public IActionResult Create()
         {
             return View();
@@ -68,6 +69,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Contents/Edit/5
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +90,7 @@ namespace OVGPFinalv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Edit(int id, [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile")] Content content)
         {
             if (id != content.ContentId)
@@ -119,6 +122,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Contents/Delete/5
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,6 +143,7 @@ namespace OVGPFinalv1.Controllers
         // POST: Contents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var content = await _context.Content.FindAsync(id);

@@ -46,7 +46,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
         {
             if (code == null)
             {
-                return BadRequest("A code must be supplied for password reset.");
+                return BadRequest("Een code moet meegeleverd worden for resetten wachtwoord");
             }
             else
             {

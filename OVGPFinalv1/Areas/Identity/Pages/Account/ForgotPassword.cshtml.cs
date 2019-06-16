@@ -55,8 +55,8 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Wachtwoord resetten",
+                    $"Ga naar de volgende link om wachtwoord te reseten <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Druk hier</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

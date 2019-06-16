@@ -46,6 +46,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Agenda/Create
+        [Authorize(Roles = "Beheerder")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +57,7 @@ namespace OVGPFinalv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Create([Bind("AgendaId,Titel,Tekst,Label,StartDatum,EindDatum")] Agenda agenda)
         {
             if (ModelState.IsValid)
@@ -68,6 +70,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Agenda/Edit/5
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +91,7 @@ namespace OVGPFinalv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Edit(int id, [Bind("AgendaId,Titel,Tekst,Label,StartDatum,EindDatum")] Agenda agenda)
         {
             if (id != agenda.AgendaId)
@@ -119,6 +123,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Agenda/Delete/5
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,6 +144,7 @@ namespace OVGPFinalv1.Controllers
         // POST: Agenda/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var agenda = await _context.Agenda.FindAsync(id);

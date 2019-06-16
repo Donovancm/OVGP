@@ -120,6 +120,7 @@ namespace OVGPFinalv1.Controllers
         }
 
         // GET: Chats/Delete/5
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,6 +141,7 @@ namespace OVGPFinalv1.Controllers
         // POST: Chats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var chat = await _context.Chat.FindAsync(id);

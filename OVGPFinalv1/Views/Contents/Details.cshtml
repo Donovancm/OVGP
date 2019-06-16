@@ -66,7 +66,14 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</a> |
-    <a asp-action="Delete" asp-route-id="@Model.ContentId">Verwijderen</a> |
-    <a asp-action="Index">Terug naar nieuwspagina</a>
+    @if (User.IsInRole("Beheerder"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</a>
+        <a asp-action="Delete" asp-route-id="@Model.ContentId">Verwijderen</a>
+        <a asp-action="Index">Terug naar nieuwspagina</a>
+    }
+    else
+    {
+        <a asp-action="Index">Terug naar nieuwspagina</a>
+    }
 </div>

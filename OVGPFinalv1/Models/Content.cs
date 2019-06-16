@@ -31,7 +31,7 @@ namespace OVGPFinalv1.Models
         [StringLength(3)]
         public string ContentType { get; set; }
         //Depends what file type it is, example PDF/URL/Cursus
-        [Display(Name = "Video or afbeelding url")]
+        [Display(Name = "Video of afbeelding url")]
         public string ContentURL { get; set; }
         public byte[] ContentFile { get; set; }
     }
