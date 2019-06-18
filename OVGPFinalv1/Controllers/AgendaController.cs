@@ -11,7 +11,7 @@ using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1.Controllers
 {
-    [Authorize(Roles = "Beheerder")]
+    [Authorize]
     public class AgendaController : Controller
     {
         private readonly ApplicationDbContext _context;

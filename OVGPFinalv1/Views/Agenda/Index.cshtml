@@ -35,10 +35,16 @@
                     <li class="list-inline-item"><i class="m-right far fa-clock"></i>@Html.DisplayFor(modelItem => item.Tijd)</li>
                 </ul>
                 <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
-
-                <a class="m-right" asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
-                <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
-                <a class="m-right" asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
+                @if (User.IsInRole("Beheerder"))
+                {
+                    <a class="m-right" asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
+                    <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
+                    <a class="m-right" asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
+                }
+                else
+                {
+                    <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
+                }
             </div>
         </div>
     </div>
