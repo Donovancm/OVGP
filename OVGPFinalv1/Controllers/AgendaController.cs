@@ -58,7 +58,7 @@ namespace OVGPFinalv1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Beheerder")]
-        public async Task<IActionResult> Create([Bind("AgendaId,Titel,Tekst,Label,StartDatum,EindDatum")] Agenda agenda)
+        public async Task<IActionResult> Create([Bind("AgendaId,Titel,Tekst,Label,Datum,Tijd")] Agenda agenda)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace OVGPFinalv1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Beheerder")]
-        public async Task<IActionResult> Edit(int id, [Bind("AgendaId,Titel,Tekst,Label,StartDatum,EindDatum")] Agenda agenda)
+        public async Task<IActionResult> Edit(int id, [Bind("AgendaId,Titel,Tekst,Label,Datum,Tijd")] Agenda agenda)
         {
             if (id != agenda.AgendaId)
             {
