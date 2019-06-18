@@ -442,3 +442,7 @@ hr.style1 {
 .cal-con {
     padding-left: 15px;
 }
+
+.cal-pad {
+    padding: 12px 10px 1px 20px;
+}
