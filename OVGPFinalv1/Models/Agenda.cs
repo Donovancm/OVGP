@@ -16,8 +16,8 @@ namespace OVGPFinalv1.Models
         public string Tekst { get; set; }
         public string Label { get; set; }
         [DataType(DataType.Date)]
-        public DateTime StartDatum { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime EindDatum { get; set; }
+        public DateTime Datum { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime Tijd { get; set; }
     }
 }

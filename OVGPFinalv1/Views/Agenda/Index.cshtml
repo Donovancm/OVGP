@@ -24,13 +24,13 @@
             <div class="col-md-2"></div>
             <div class="col-md-3">
                 <p class="calendar">
-                    @Html.DisplayFor(modelItem => item.StartDatum.Day)<em id="month"></em>
+                    @Html.DisplayFor(modelItem => item.Datum)<em id="month"></em>
                 </p>
             </div>
             <div class="col-md-7">
                 <h3 class="text-uppercase" style="color: black"><strong>@Html.DisplayFor(modelItem => item.Titel)</strong></h3>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><i class="m-right far fa-calendar-alt"></i>@Html.DisplayFor(modelItem => item.StartDatum)</li>
+                    <li class="list-inline-item"><i class="m-right far fa-calendar-alt"></i>@Html.DisplayFor(modelItem => item.Datum)</li>
                 </ul>
                 <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
 
@@ -41,7 +41,7 @@
         </div>
     </div>
     <script>
-        document.getElementById("month").innerHTML = months[@Html.DisplayFor(modelItem => item.StartDatum.Month)-1];
+        @*document.getElementById("month").innerHTML = months[@Html.DisplayFor(modelItem => item.StartDatum.Month)-1];*@
     </script>
     <br />
 }
