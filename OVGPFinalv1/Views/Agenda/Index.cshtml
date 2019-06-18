@@ -5,27 +5,32 @@
 }
 
 
-<h1>Index</h1>
+<h1>Agenda</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
+<script>
+    var months = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+</script>
+
 
 @foreach (var item in Model)
 {
-    <div class="container">
-        <div class="row row-striped">
-            <div class="col-2 text-right">
-                <h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-                <h2>OCT</h2>
+    <div class="container cal-con">
+        <div class="row row-striped col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <p class="calendar">
+                    @Html.DisplayFor(modelItem => item.StartDatum.Day)<em id="month"></em>
+                </p>
             </div>
-            <div class="col-10">
+            <div class="col-md-7">
                 <h3 class="text-uppercase" style="color: black"><strong>@Html.DisplayFor(modelItem => item.Titel)</strong></h3>
                 <ul class="list-inline">
                     <li class="list-inline-item"><i class="m-right far fa-calendar-alt"></i>@Html.DisplayFor(modelItem => item.StartDatum)</li>
-                    <li class="list-inline-item"><i class="m-right far fa-clock"></i>@Html.DisplayFor(modelItem => item.EindDatum)</li>
-                    <li class="list-inline-item"><i class="m-right fas fa-tag"></i>@Html.DisplayFor(modelItem => item.Label)</li>
                 </ul>
                 <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
 
@@ -35,5 +40,8 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("month").innerHTML = months[@Html.DisplayFor(modelItem => item.StartDatum.Month)-1];
+    </script>
     <br />
 }
