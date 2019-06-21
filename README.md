@@ -7,11 +7,11 @@ Packet Manager Control : Update-Database
 
 TODO:
 
--Fix online/PWA
+-Abonneren op nieuwsbrief en verzenden via mail
 
--Fix chatten
+-Aanpassen fileuploads(BA/FE)
 
--Toewijzen Identity roles op user
+-Admin panel
 
 -Frontend design
 
