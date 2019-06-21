@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,16 +17,18 @@ namespace OVGPFinalv1.Controllers
     public class ContentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnv;
 
-        public ContentsController(ApplicationDbContext context)
+        public ContentsController(ApplicationDbContext context, IHostingEnvironment hostingEnv)
         {
+            _hostingEnv = hostingEnv;
             _context = context;
         }
 
         // GET: Contents
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Content.OrderBy(x => x.PostedDate).ToListAsync());
+            return View( await _context.Content.OrderBy(x => x.PostedDate).ToListAsync());
         }
 
         // GET: Contents/Details/5
@@ -55,17 +59,54 @@ namespace OVGPFinalv1.Controllers
         // POST: Contents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(content);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(content);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile")] Content content)
+        public async Task<IActionResult> Create([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content,ContentViewModel contentViewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(content);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (contentViewModel.ContentFile != null)
+                {
+                    //upload files to wwwroot
+                    var fileName = Path.GetFileName(contentViewModel.ContentFile.FileName);
+                    var filePath = Path.Combine(_hostingEnv.WebRootPath, "stream", fileName);
+                    using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                    {
+                        await contentViewModel.ContentFile.CopyToAsync(fileSteam);
+                    }
+                    //your logic to save filePath to database, for example
+                    filePath = Path.Combine("stream", contentViewModel.ContentFile.FileName);
+                    Content contents = new Content();
+
+                    contents.Title = contentViewModel.Title;
+                    contents.Text = contentViewModel.Text;
+                    contents.PostedDate = contentViewModel.PostedDate;
+                    contents.NamePostedUser = contentViewModel.NamePostedUser;
+                    contents.ContentType = contentViewModel.ContentType;
+                    contents.ContentURL = contentViewModel.ContentURL;
+                    content.ContentFile = contents.ContentFile;
+
+                    //contents.ContentFile = filePath.Remove(0, 55);
+                    contents.ContentFile = filePath;
+                    _context.Content.Add(contents);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            return View(content);
+            return View();
+
         }
 
         // GET: Contents/Edit/5

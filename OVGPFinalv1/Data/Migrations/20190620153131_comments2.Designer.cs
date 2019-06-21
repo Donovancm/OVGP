@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OVGPFinalv1.Data;
 
 namespace OVGPFinalv1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190620153131_comments2")]
+    partial class comments2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,7 +259,7 @@ namespace OVGPFinalv1.Data.Migrations
 
                     b.Property<bool>("CommentsAllowed");
 
-                    b.Property<string>("ContentFile");
+                    b.Property<byte[]>("ContentFile");
 
                     b.Property<string>("ContentType")
                         .HasMaxLength(3);

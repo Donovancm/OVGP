@@ -57,6 +57,10 @@
                 <object data="@Model.ContentURL" class="embed-responsive-item" width="480" height="270"></object>
             }
         </dd>
+        @if (Model.CommentsAllowed == true)
+        {
+            //partial view doen
+        }
         @*<dt class = "col-sm-2">
                 @Html.DisplayNameFor(model => model.ContentFile)
             </dt>

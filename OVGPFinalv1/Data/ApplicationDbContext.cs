@@ -19,5 +19,7 @@ namespace OVGPFinalv1.Data
         public DbSet<OVGPFinalv1.Models.Chat> Chat { get; set; }
 
         public DbSet<OVGPFinalv1.Models.Agenda> Agenda { get; set; }
+
+        public DbSet<OVGPFinalv1.Models.Comment> Comment { get; set; }
     }
 }

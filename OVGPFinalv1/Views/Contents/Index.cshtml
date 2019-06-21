@@ -24,32 +24,34 @@
     <div class="row justify-content-center" style="margin-top:30px;">
         @foreach (var item in Model.Reverse())
         {
-            <div class="card col-md-5 bg-light" id="btn_card1_card">
-                @if (item.ContentURL == null)
-                {
-                    @*<iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>*@
-                    <object data="~/Images/placeholder.png" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
-                }
-                else if (item.ContentURL != null && item.ContentType == "VID")
-                {
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item card-img-top" src="@item.ContentURL" alt="Card image" allowfullscreen></iframe>
-                    </div>
-                }
-                else if (item.ContentURL != null && item.ContentType == "IMG")
-                {
-                    <object data="@item.ContentURL" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
-                }
-                <div class="card-body" id="card1_radio_body">
-                    <h4 class="card-title"><em>@Html.ActionLink(item.Title, "Details", "Contents", new { id = item.ContentId })</em></h4>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.Text)</p>
+        <div class="card col-md-5 bg-light" id="btn_card1_card">
+            @if (item.ContentURL == null)
+            {
+                @*<iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>*@
+                <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+            }
+            else if (item.ContentURL != null && item.ContentType == "VID")
+            {
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item card-img-top" src="@item.ContentURL" alt="Card image" allowfullscreen></iframe>
                 </div>
-                <div class="card-footer">
-                    <p>
-                        @Html.DisplayFor(modelItem => item.PostedDate)
-                    </p>
-                </div>
+            }
+            else if (item.ContentURL != null && item.ContentType == "IMG")
+            {
+                <object data="@item.ContentURL" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+            }
+            <div class="card-body" id="card1_radio_body">
+                <h4 class="card-title"><em>@Html.ActionLink(item.Title, "Details", "Contents", new { id = item.ContentId })</em></h4>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Text)</p>
             </div>
+            <p>
+            </p>
+            <div class="card-footer">
+                <p>
+                    @Html.DisplayFor(modelItem => item.PostedDate)
+                </p>
+            </div>
+        </div>
         }
     </div>
 </div>
