@@ -59,6 +59,8 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             [DataType(DataType.Text)]
             [Display(Name = "Plaats")]
             public string Plaats { get; set; }
+            [Required]
+            public bool Nieuwsbrief { get; set; }
 
             [Phone]
             [Display(Name = "Telefoonnummer")]
@@ -89,6 +91,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
                 Adres = user.Adres,
                 PostCode = user.Postcode,
                 Plaats = user.Plaats,
+                Nieuwsbrief = user.Nieuwsbrief,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -124,6 +127,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             if (Input.Plaats != user.Plaats)
             {
                 user.Plaats = Input.Plaats;
+            }
+            if (Input.Nieuwsbrief != user.Nieuwsbrief)
+            {
+                user.Nieuwsbrief = Input.Nieuwsbrief;
             }
             if (user == null)
             {

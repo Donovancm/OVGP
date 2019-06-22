@@ -59,6 +59,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Plaats")]
             public string Plaats { get; set; }
+
+            [Display(Name = "Inschrijven voor nieuwsbrief")]
+            public bool Nieuwsbrief { get; set; }
+
             [Required(ErrorMessage = "Geef valide email aan")]
             [EmailAddress]
             [Display(Name = "Email")]

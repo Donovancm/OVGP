@@ -24,5 +24,8 @@ namespace OVGPFinalv1.Models
         [Required]
         [PersonalData]
         public string Plaats { get; set; }
+        [Required]
+        [PersonalData]
+        public bool Nieuwsbrief { get; set; }
     }
 }
