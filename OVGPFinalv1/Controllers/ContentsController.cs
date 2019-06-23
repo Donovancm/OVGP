@@ -5,11 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OVGPFinalv1.Data;
 using OVGPFinalv1.Models;
+using OVGPFinalv1.Models.Email_Models;
 
 namespace OVGPFinalv1.Controllers
 {
@@ -18,17 +20,23 @@ namespace OVGPFinalv1.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment _hostingEnv;
+        private readonly UserManager<Models.User> _userManager;
+        private EmailAddress FromAndToEmailAddress;
+        private IEmailService EmailService;
 
-        public ContentsController(ApplicationDbContext context, IHostingEnvironment hostingEnv)
+        public ContentsController(ApplicationDbContext context, IHostingEnvironment hostingEnv, EmailAddress _fromAddress, IEmailService _emailService, UserManager<Models.User> userManager)
         {
+            _userManager = userManager;
             _hostingEnv = hostingEnv;
             _context = context;
+            FromAndToEmailAddress = _fromAddress;
+            EmailService = _emailService;
         }
 
         // GET: Contents
         public async Task<IActionResult> Index()
         {
-            return View( await _context.Content.OrderBy(x => x.PostedDate).ToListAsync());
+            return View(await _context.Content.OrderBy(x => x.PostedDate).ToListAsync());
         }
 
         // GET: Contents/Details/5
@@ -55,25 +63,13 @@ namespace OVGPFinalv1.Controllers
         {
             return View();
         }
-
         // POST: Contents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(content);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(content);
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content,ContentViewModel contentViewModel)
+        public async Task<IActionResult> Create(
+            [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content, ContentViewModel contentViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -107,6 +103,40 @@ namespace OVGPFinalv1.Controllers
             }
             return View();
 
+        }
+        public async Task<IActionResult> CreateNieuwsbrief(
+            [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content, EmailAddress emailAddress)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(content);
+                var users = _userManager.Users;
+                foreach (var item in users)
+                {
+                    EmailAddress adres = new EmailAddress()
+                    {
+                        Address = item.Email
+                    };
+                    if (item.Nieuwsbrief == true)
+                    {
+                        EmailMessage msgToSend = new EmailMessage
+                        {
+                            FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+                            ToAddresses = new List<EmailAddress> { adres },
+                            //Hier nog vormgeven email
+                            Content = $"Here is your message: Name: {item.UserName}, " +
+                            $"Email: {item.Email}, Message: {content.Text}",
+                            Subject = $"Nieuwsbrief, {content.Title}"
+                        };
+                        EmailService.Send(msgToSend);
+                    }
+                }
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            
+            return View(content);
         }
 
         // GET: Contents/Edit/5

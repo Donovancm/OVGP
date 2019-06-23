@@ -98,6 +98,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     Plaats = Input.Plaats,
                     UserName = Input.Email,
                     Email = Input.Email,
+                    Nieuwsbrief = Input.Nieuwsbrief,
                     //Voor nu true
                     EmailConfirmed = true
                 };

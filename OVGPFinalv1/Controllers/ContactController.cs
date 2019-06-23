@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OVGPFinalv1.Models;
 using OVGPFinalv1.Models.Email_Models;
@@ -12,8 +13,10 @@ namespace OVGPFinalv1.Controllers
     {
         private EmailAddress FromAndToEmailAddress;
         private IEmailService EmailService;
-        public ContactController(EmailAddress _fromAddress, IEmailService _emailService)
+        private readonly UserManager<Models.User> _userManager;
+        public ContactController(EmailAddress _fromAddress, IEmailService _emailService, UserManager<Models.User> userManager)
         {
+            _userManager = userManager;
             FromAndToEmailAddress = _fromAddress;
             EmailService = _emailService;
         }
