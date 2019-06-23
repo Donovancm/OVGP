@@ -72,12 +72,16 @@
 <div>
     @if (User.IsInRole("Beheerder"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</a>
-        <a asp-action="Delete" asp-route-id="@Model.ContentId">Verwijderen</a>
-        <a asp-action="Index">Terug naar nieuwspagina</a>
+        <form>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwspagina</button>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</button>
+            <button class="btn btn-grey m-right btn-sm" asp-action="delete" asp-route-id="@Model.ContentId">Verwijderen</button>
+        </form>
     }
     else
     {
-        <a asp-action="Index">Terug naar nieuwspagina</a>
+        <form>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwspagina</button>
+        </form>
     }
-</div>
+    </div>

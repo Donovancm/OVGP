@@ -97,7 +97,7 @@ h2.active {
 }
 
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #00bfe8;
+    background-color: #00a9ce;
     border: none;
     color: white;
     padding: 15px 15%;
@@ -119,18 +119,18 @@ input[type=button], input[type=submit], input[type=reset] {
 
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-        background-color: #15a7c6;
+        background-color: #00809c;
     }
 
 
 .btn-primary {
-    background-color: #00bfe8;
+    background-color: #00a9ce;
     border: none;
     color: white
 }
 
     .btn-primary:hover {
-        background-color: #15a7c6;
+        background-color: #00809c;
     }
 
 input[type=text], input[type=password] {
@@ -141,7 +141,7 @@ input[type=text], input[type=password] {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 90%;
+    width: 100%;
     margin-bottom: 10px;
     border: 1px solid #ced4da;
     -webkit-transition: all 0.5s ease-in-out;
@@ -328,7 +328,7 @@ hr.style1 {
 
 
 .form-control {
-    width: 90%;
+    width: 100%;
 }
 
 .row-striped {
@@ -377,66 +377,17 @@ hr.style1 {
         display: block;
         font: normal bold 11px/30px Arial,Helvetica,sans-serif;
         color: #fff;
-        text-shadow: #00365a 0 -1px 0;
+        text-shadow: #082f4a 0 -1px 0;
         background: #04599a;
         background: -webkit-gradient(linear,left top,left bottom,from(#04599a),to(#00365a));
-        background: -moz-linear-gradient(top,#04599a,#00365a);
+        background: -moz-linear-gradient(top,#0b7e9f,#0d99c2);
         -moz-border-radius-bottomright: 3px;
         -webkit-border-bottom-right-radius: 3px;
         border-bottom-right-radius: 3px;
         -moz-border-radius-bottomleft: 3px;
         -webkit-border-bottom-left-radius: 3px;
         border-bottom-left-radius: 3px;
-        border-top: 1px solid #00365a
-    }
-
-    .calendar:before, .calendar:after {
-        content: '';
-        float: left;
-        position: absolute;
-        top: 5px;
-        width: 8px;
-        height: 8px;
-        background: #111;
-        z-index: 1;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        -moz-box-shadow: 0 1px 1px #fff;
-        -webkit-box-shadow: 0 1px 1px #fff;
-        box-shadow: 0 1px 1px #fff
-    }
-
-    .calendar:before {
-        left: 11px
-    }
-
-    .calendar:after {
-        right: 11px
-    }
-
-    .calendar em:before, .calendar em:after {
-        content: '';
-        float: left;
-        position: absolute;
-        top: -5px;
-        width: 4px;
-        height: 14px;
-        background: #dadada;
-        background: -webkit-gradient(linear,left top,left bottom,from(#f1f1f1),to(#aaa));
-        background: -moz-linear-gradient(top,#f1f1f1,#aaa);
-        z-index: 2;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-        border-radius: 2px
-    }
-
-    .calendar em:before {
-        left: 13px
-    }
-
-    .calendar em:after {
-        right: 13px
+        border-top: 1px solid #0d99c2;
     }
 
 .cal-con {
@@ -446,3 +397,24 @@ hr.style1 {
 .cal-pad {
     padding: 12px 10px 1px 20px;
 }
+
+.ovgp-blue {
+    color: #00BDF3;
+}
+
+h3 {
+    color: #00BDF3;
+    margin-bottom: 20px;
+}
+
+.btn-grey {
+    color: #fff;
+    background-color: #6f787b;
+    border-color: #687377;
+}
+
+    .btn-grey:focus {
+        box-shadow: 0 0 0 0.2rem #b8c2c587;
+    }
+
+  

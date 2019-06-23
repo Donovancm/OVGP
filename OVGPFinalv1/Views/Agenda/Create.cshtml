@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h3>Nieuwe aanmaken</h3>
 
-<h4>Agenda</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,9 +43,9 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Terug naar agenda</a>
-</div>
+<form>
+    <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug</button>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

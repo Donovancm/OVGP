@@ -2,42 +2,23 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<style>
-
-    h3 {
-        color: #00BDF3;
-        text-align: center;
-    }
-</style>
 <div class="container">
-    <h3>Wie zijn wij?</h3>
-    <div class="embed-responsive embed-responsive-16by9 top-space">
+    <h3 class="text-center">Wie zijn wij?</h3>
+    <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ScMzIvxBSi4" allowfullscreen></iframe>
     </div>
     <br>
     <hr class="style1">
     <br>
 
-    @*<div class="add-btn text-center">
-            <a href="~/Contents/Create" class="addbtn">
-                <img style="width:200px;height:200px;" src="~/Images/add.png" />
-            </a>
-        </div>*@
-    <h3>Nieuws</h3>
+    <h3 class="text-center">Nieuws</h3>
     <div class="news-items">
-        @*@Html.Partial("~/Views/Shared/_Contents.cshtml", new Content())
-            @{Html.RenderPartial("~/Views/Shared/_Contents.cshtml", new Content());}*@
-        <div class="row justify-content-center" style="margin-top:30px;">
+        <div class="row justify-content-center">
             @foreach (var item in Model.Reverse())
             {
             <div class="card col-md-5 bg-light" id="btn_card1_card">
                 @if (item.ContentURL == null)
                 {
-                    @*<iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>*@
-                    @*<object data="~/Images/placeholder.png" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>*@
                     <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
                 }
                 else if (item.ContentURL != null && item.ContentType == "VID")

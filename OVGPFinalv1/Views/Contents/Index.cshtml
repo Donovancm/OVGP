@@ -2,32 +2,22 @@
 @{
     ViewData["Title"] = "Nieuws";
 }
-<style>
-
-    h3 {
-        color: #00BDF3;
-        text-align: center;
-    }
-</style>
 <h3 class="text-center">Nieuws</h3>
 @if (User.IsInRole("Beheerder"))
 {
     <div class="add-btn text-center">
-        <a href="~/Contents/Create" class="addbtn">
+        <a asp-action="Create" class="addbtn">
             <img style="width:200px;height:200px;" src="~/Images/add.png" />
         </a>
     </div>
 }
 <div class="news-items">
-    @*@Html.Partial("~/Views/Shared/_Contents.cshtml", new Content())
-        @{Html.RenderPartial("~/Views/Shared/_Contents.cshtml", new Content());}*@
     <div class="row justify-content-center" style="margin-top:30px;">
         @foreach (var item in Model.Reverse())
         {
         <div class="card col-md-5 bg-light" id="btn_card1_card">
             @if (item.ContentURL == null)
             {
-                @*<iframe class="embed-responsive-item card-img" src="~/Images/ovgp.png" height="360" alt="Card image"></iframe>*@
                 <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
             }
             else if (item.ContentURL != null && item.ContentType == "VID")
@@ -55,66 +45,3 @@
         }
     </div>
 </div>
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Text)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PostedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NamePostedUser)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContentType)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContentURL)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContentFile)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Text)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NamePostedUser)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContentType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContentURL)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContentFile)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ContentId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ContentId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ContentId">Delete</a>
-                </td>
-            </tr>
-    }
-        </tbody>
-    </table>*@

@@ -4,10 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h3>Details</h3>
 
 <div>
-    <h4>Agenda</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -45,11 +44,15 @@
 <div>
     @if (User.IsInRole("Beheerder"))
     {
-        <a asp-action="Edit" asp-route-id="@Model.AgendaId">Aanpassen gegevens</a>
-        <a asp-action="Index">Terug naar Agenda</a>
+        <form>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug</button>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Edit" asp-route-id="@Model.AgendaId">Aanpassen</button>
+        </form>
     }
     else
     {
-        <a asp-action="Index">Terug naar Agenda</a>
-    }|
+        <form>
+            <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug</button>
+        </form>
+    }
 </div>

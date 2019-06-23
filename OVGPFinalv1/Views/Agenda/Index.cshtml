@@ -4,20 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-
-
-<h1>Agenda</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
 <script>
     var months = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
         "Juli", "Augustus", "September", "Oktober", "November", "December"];
     var i = 0;
 </script>
 
+
+<h3 class="text-center">Agenda</h3>
+
+@if (User.IsInRole("Beheerder"))
+{
+    <div class="add-btn text-center" style="margin-bottom: 30px;">
+        <a asp-action="Create" class="addbtn">
+            <img style="width:200px;height:200px;" src="~/Images/add.png" />
+        </a>
+    </div>
+}
 
 @foreach (var item in Model)
 {
@@ -37,21 +40,25 @@
                 <p>@Html.DisplayFor(modelItem => item.Tekst)</p>
                 @if (User.IsInRole("Beheerder"))
                 {
-                    <a class="m-right" asp-action="Edit" asp-route-id="@item.AgendaId">Edit</a>
-                    <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
-                    <a class="m-right" asp-action="Delete" asp-route-id="@item.AgendaId">Delete</a>
+                    <form>
+                        <button class="btn btn-grey m-right btn-sm" asp-action="Edit" asp-route-id="@item.AgendaId">Edit</button>
+                        <button class="btn btn-grey m-right btn-sm" asp-action="Details" asp-route-id="@item.AgendaId">Details</button>
+                        <button class="btn btn-grey m-right btn-sm" asp-action="Delete" asp-route-id="@item.AgendaId">Delete</button>
+                    </form>
                 }
                 else
                 {
-                    <a class="m-right" asp-action="Details" asp-route-id="@item.AgendaId">Details</a>
+                    <form>
+                        <button class="btn btn-grey m-right btn-sm" asp-action="Details" asp-route-id="@item.AgendaId">Details</button>
+                    </form>
                 }
             </div>
         </div>
     </div>
     <script>
-          var x = document.getElementsByClassName("month");
-        x[i].innerHTML = months[@Html.DisplayFor(modelItem => item.Datum.Month)-1];
-        i++
+        var x = document.getElementsByClassName("month");
+    x[i].innerHTML = months[@Html.DisplayFor(modelItem => item.Datum.Month)-1];
+    i++
     </script>
     <br />
 }

@@ -61,7 +61,8 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ContentId" />
-        <input type="submit" value="Verwijderen" class="btn btn-danger" /> |
-        <a asp-action="Index">Terug naar nieuwspagina</a>
+        <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwspagina</button>
+        <button class="btn btn-grey m-right btn-sm" asp-action="Edit" asp-route-id="@Model.ContentId">Aanpassen</button>
+        <button class="btn btn-grey m-right btn-sm" asp-action="delete" asp-route-id="@Model.ContentId">Verwijderen</button>
     </form>
 </div>
