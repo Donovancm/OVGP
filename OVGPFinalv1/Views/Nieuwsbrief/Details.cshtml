@@ -7,7 +7,6 @@
 <h3>Details</h3>
 
 <div>
-    <h4>Nieuwsbrief</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -38,5 +37,7 @@
 </div>
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.NieuwsbriefId">Edit</a> |*@
-    <a asp-action="Index">Back to List</a>
+    <form>
+        <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwsbrieven</button>
+    </form>
 </div>
