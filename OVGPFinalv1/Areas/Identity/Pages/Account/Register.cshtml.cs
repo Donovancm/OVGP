@@ -119,7 +119,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     //Prevent auto log in when registeren
                     ///
                     await _userManager.AddToRoleAsync(user, "Lid");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

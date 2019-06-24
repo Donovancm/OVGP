@@ -49,17 +49,23 @@ namespace OVGPFinalv1
             {
                 //Testen met echte email werkt, nu een email maken
                 //Hotmail ....
-                SmtpPassword = "920PLM.AzE.bdc", //<---
-                SmtpServer = "smtp.live.com", //
-                SmtpUsername = "ovgpictlab@hotmail.com" //<---
+                //Configuration.GetSection("UserSettings")["UserEmail"],
+                //SmtpPassword = "920PLM.AzE.bdc", //<---
+                //SmtpServer = "smtp.live.com", //
+                //SmtpUsername = "ovgpictlab@hotmail.com" //<---
+                SmtpPassword = Configuration.GetSection("EmailSettings")["SmtpPassword"], //<---
+                SmtpServer = Configuration.GetSection("EmailSettings")["SmtpServer"], //
+                SmtpUsername = Configuration.GetSection("EmailSettings")["SmtpUsername"], //<---
             };
 
             EmailAddress FromEmailAddress = new EmailAddress
             {
                 //Placeholder van wie zetten
                 //Hotmail ...
-                Address = "ovgpictlab@hotmail.com",//<-----
-                Name = "ICTlab"
+                //Address = "ovgpictlab@hotmail.com",//<-----
+                //Name = "ICTlab"
+                Address = Configuration.GetSection("EmailSettings")["Adress"],
+                Name = Configuration.GetSection("EmailSettings")["Name"]
             };
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<SmptConfig>(Configuration);
