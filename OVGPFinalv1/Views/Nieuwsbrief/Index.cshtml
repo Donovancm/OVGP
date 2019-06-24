@@ -1,0 +1,50 @@
+﻿@model IEnumerable<OVGPFinalv1.Models.Nieuwsbrief>
+
+
+<h4>Archief van nieuwsbrieven</h4>
+
+<p>
+    <a asp-action="Create">Aanmaken nieuwsbrief</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Onderwerp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Onderwerp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostedDate)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.NieuwsbriefId">Edit</a>*@ |
+                <a asp-action="Details" asp-route-id="@item.NieuwsbriefId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.NieuwsbriefId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
