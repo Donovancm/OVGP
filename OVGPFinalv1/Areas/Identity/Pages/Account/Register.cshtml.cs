@@ -69,7 +69,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "{0} moet tenminsten {2} en maximaal {1} karakters lang zijn.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} moet tenminsten {2} en maximaal {1} karakters lang zijn. ", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Wachtwoord")]
             public string Password { get; set; }
