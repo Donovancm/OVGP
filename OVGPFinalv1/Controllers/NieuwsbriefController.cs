@@ -83,9 +83,8 @@ namespace OVGPFinalv1.Controllers
                             FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
                             ToAddresses = new List<EmailAddress> { adres },
                             //Hier nog vormgeven email
-                            Content = $"Here is your message: Name: {item.UserName}, " +
-                            $"Email: {item.Email}, Message: {nieuwsbrief.Text}",
-                            Subject = $"Nieuwsbrief, {nieuwsbrief.Title}"
+                            Content = $"{nieuwsbrief.Text}",
+                            Subject = $"{nieuwsbrief.Title}"
                         };
                         EmailService.Send(msgToSend);
                     }

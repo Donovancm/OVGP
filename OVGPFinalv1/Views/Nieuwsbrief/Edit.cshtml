@@ -5,7 +5,7 @@
 }
 
 
-<h4>Nieuwsbrief</h4>
+<h3>Nieuwsbrief</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -39,9 +39,9 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<form>
+    <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwsbrieven</button>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
