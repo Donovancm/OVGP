@@ -40,12 +40,20 @@
             </div>
             @if (User.IsInRole("Beheerder"))
             {
-                <a asp-action="Chatgeschiedenis" asp-controller="Chats">Geschiedenis</a>
-                <a asp-action="Chatberichten" asp-controller="Chats">Belangrijke chatberichten</a>
+                <form>
+                    <button class="btn btn-grey m-right btn-sm" asp-action="Chatgeschiedenis" asp-controller="Chats">Chat Geschiedenis</button>
+                    <button class="btn btn-grey m-right btn-sm" asp-action="Chatberichten" asp-controller="Chats">
+                        Belangrijke chatberichten
+                    </button>
+                </form>
             }
             else
             {
-                <a asp-action="Chatberichten" asp-controller="Chats">Belangrijke chatberichten</a>
+                <form>
+                    <button class="btn btn-grey m-right btn-sm" asp-action="Chatberichten" asp-controller="Chats">
+                        Belangrijke chatberichten
+                    </button>
+                </form>
             }
         </div>
     </div>
