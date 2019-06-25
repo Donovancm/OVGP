@@ -20,9 +20,6 @@
                 @Html.DisplayNameFor(model => model.Onderwerp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PostedDate)
             </th>
             <th></th>
@@ -39,16 +36,13 @@
                     @Html.DisplayFor(modelItem => item.Onderwerp)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Text)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.PostedDate)
                 </td>
                 <td>
                     @*<a asp-action="Edit" asp-route-id="@item.NieuwsbriefId">Edit</a>*@
                     <form>
-                        <button class="btn btn-grey m-right btn-sm" asp-action="Details" asp-route-id="@item.NieuwsbriefId">Details</button>
-                        <button class="btn btn-grey m-right btn-sm" asp-action="delete" asp-route-id="@item.NieuwsbriefId">Delete</button>
+                        <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-action="Details" asp-route-id="@item.NieuwsbriefId">Details</button>
+                        <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-action="delete" asp-route-id="@item.NieuwsbriefId">Delete</button>
                     </form>
                 </td>
             </tr>
