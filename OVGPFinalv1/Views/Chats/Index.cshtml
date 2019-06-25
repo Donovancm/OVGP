@@ -6,39 +6,47 @@
 
 
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 chat-window">
-                <div class="panels rounded">
-                    <div class="panel">
-                        <div class="panel-heading top-bar rounder-top">
-                            <div class="col-md-8 col-xs-8">
-                                <h3 class="panel-title" style="color: #00BDF3;"><span class="glyphicon glyphicon-comment"></span>Ondernemers chat</h3>
-                            </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 chat-window">
+            <div class="panels rounded">
+                <div class="panel">
+                    <div class="panel-heading top-bar rounder-top">
+                        <div class="col-md-8 col-xs-8">
+                            <h3 class="panel-title" style="color: #00BDF3;"><span class="glyphicon glyphicon-comment"></span>Ondernemers chat</h3>
                         </div>
                     </div>
-                    <div class="panel-body msg_container_base" style="overflow-y: scroll; height:500px;">
-                        @foreach (var item in Model)
-                        {
-                            <div class="row msg_container">
-                                <div class="col-md-10">
-                                    <div class="messages msg_sent">
-                                        <p>
-                                            @Html.DisplayFor(modelItem => item.Text)
-                                        </p>
-                                        <time datetime="2009-11-13T20:00" class="">@Html.DisplayFor(modelItem => item.PersonName) - @Html.DisplayFor(modelItem => item.Posted)</time>
-                                    </div>
+                </div>
+                <div class="panel-body msg_container_base" style="overflow-y: scroll; height:500px;">
+                    @foreach (var item in Model)
+                    {
+                        <div class="row msg_container">
+                            <div class="col-md-10">
+                                <div class="messages msg_sent">
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Text)
+                                    </p>
+                                    <time datetime="2009-11-13T20:00" class="">@Html.DisplayFor(modelItem => item.PersonName) - @Html.DisplayFor(modelItem => item.Posted)</time>
                                 </div>
                             </div>
-                        }
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="input-group">
-                        @await Html.PartialAsync("/Views/Chats/Create.cshtml", new OVGPFinalv1.Models.Chat())
-
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                    @await Html.PartialAsync("/Views/Chats/Create.cshtml", new OVGPFinalv1.Models.Chat())
+                </div>
+            </div>
+            @if (User.IsInRole("Beheerder"))
+            {
+                <a asp-action="Chatgeschiedenis" asp-controller="Chats">Geschiedenis</a>
+                <a asp-action="Chatberichten" asp-controller="Chats">Belangrijke chatberichten</a>
+            }
+            else
+            {
+                <a asp-action="Chatberichten" asp-controller="Chats">Belangrijke chatberichten</a>
+            }
         </div>
     </div>
+</div>

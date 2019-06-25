@@ -27,6 +27,15 @@ namespace OVGPFinalv1.Controllers
         {
             return View(await _context.Chat.ToListAsync());
         }
+        public async Task<IActionResult> ChatGeschiedenis()
+        {
+            return View(await _context.Chat.ToListAsync());
+        }
+        public async Task<IActionResult> Chatberichten()
+        {
+            return View(await _context.Chat.ToListAsync());
+        }
+
 
         // GET: Chats/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -57,7 +66,7 @@ namespace OVGPFinalv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ChatId,PersonName,Text,Posted")] Chat chat)
+        public async Task<IActionResult> Create([Bind("ChatId,PersonName,Text,Posted, ChatImportant")] Chat chat)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +98,7 @@ namespace OVGPFinalv1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ChatId,PersonName,Text,Posted")] Chat chat)
+        public async Task<IActionResult> Edit(int id, [Bind("ChatId,PersonName,Text,Posted, ChatImportant")] Chat chat)
         {
             if (id != chat.ChatId)
             {

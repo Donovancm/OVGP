@@ -20,10 +20,13 @@ namespace OVGPFinalv1.Models
         [Required]
         public string PersonName { get; set; }
         [Required]
+        [Display(Name = "Bericht")]
         public string Text { get; set; }
-        [Display(Name = "Gepost Door")]
+        [Display(Name = "Belangrijk chatbericht")]
+        [UIHint("IsActive")]
+        public bool ChatImportant { get; set; }
+        [Display(Name = "Tijdstip")]
         public DateTime Posted { get; set; }
 
-        //public List<User> User {get; set;}
     }
 }

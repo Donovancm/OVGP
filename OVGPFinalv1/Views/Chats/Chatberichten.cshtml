@@ -1,0 +1,50 @@
+﻿@model IEnumerable<OVGPFinalv1.Models.Chat>
+@{
+    ViewData["Title"] = "Vastgezetteberichten";
+}
+
+<h1>Belangrijke chatberichten</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.ChatImportant == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Posted)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.NieuwsbriefId">Edit</a>*@
+                        @if (User.IsInRole("Beheerder"))
+                        {
+                            <a asp-action="Details" asp-route-id="@item.ChatId">Details</a> 
+                            <a asp-action="Delete" asp-route-id="@item.ChatId">Verwijderen</a> 
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
