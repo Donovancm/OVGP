@@ -63,6 +63,21 @@ namespace OVGPFinalv1.Controllers
         {
             return View();
         }
+        public IActionResult CreateOptions()
+        {
+            return View();
+        }
+        
+        public async Task<IActionResult> CreateWithURL([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(content);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(content);
+        }
         // POST: Contents/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -101,43 +116,43 @@ namespace OVGPFinalv1.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
-            return View();
-
-        }
-        public async Task<IActionResult> CreateNieuwsbrief(
-            [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content, EmailAddress emailAddress)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(content);
-                var users = _userManager.Users;
-                foreach (var item in users)
-                {
-                    EmailAddress adres = new EmailAddress()
-                    {
-                        Address = item.Email
-                    };
-                    if (item.Nieuwsbrief == true)
-                    {
-                        EmailMessage msgToSend = new EmailMessage
-                        {
-                            FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
-                            ToAddresses = new List<EmailAddress> { adres },
-                            //Hier nog vormgeven email
-                            Content = $"Here is your message: Name: {item.UserName}, " +
-                            $"Email: {item.Email}, Message: {content.Text}",
-                            Subject = $"Nieuwsbrief, {content.Title}"
-                        };
-                        EmailService.Send(msgToSend);
-                    }
-                }
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
-            }
-            
             return View(content);
+
         }
+        //public async Task<IActionResult> CreateNieuwsbrief(
+        //    [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content, EmailAddress emailAddress)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(content);
+        //        var users = _userManager.Users;
+        //        foreach (var item in users)
+        //        {
+        //            EmailAddress adres = new EmailAddress()
+        //            {
+        //                Address = item.Email
+        //            };
+        //            if (item.Nieuwsbrief == true)
+        //            {
+        //                EmailMessage msgToSend = new EmailMessage
+        //                {
+        //                    FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
+        //                    ToAddresses = new List<EmailAddress> { adres },
+        //                    //Hier nog vormgeven email
+        //                    Content = $"Here is your message: Name: {item.UserName}, " +
+        //                    $"Email: {item.Email}, Message: {content.Text}",
+        //                    Subject = $"Nieuwsbrief, {content.Title}"
+        //                };
+        //                EmailService.Send(msgToSend);
+        //            }
+        //        }
+        //        await _context.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+            
+        //    return View(content);
+        //}
 
         // GET: Contents/Edit/5
         [Authorize(Roles = "Beheerder")]

@@ -6,7 +6,7 @@
 @if (User.IsInRole("Beheerder"))
 {
     <div class="add-btn text-center">
-        <a asp-action="Create" class="addbtn">
+        <a asp-action="CreateOptions" class="addbtn">
             <img style="width:200px;height:200px;" src="~/Images/add.png" />
         </a>
     </div>
@@ -16,9 +16,13 @@
         @foreach (var item in Model.Reverse())
         {
         <div class="card col-md-5 bg-light" id="btn_card1_card">
-            @if (item.ContentURL == null)
+            @if (item.ContentURL == null && item.ContentFile == null)
             {
-                <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+                <object data="~/Images/placeholder.png" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+            }
+            else if (item.ContentURL != null && item.ContentType == "IMG")
+            {
+                <object data="@item.ContentURL" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
             }
             else if (item.ContentURL != null && item.ContentType == "VID")
             {
@@ -26,9 +30,15 @@
                     <iframe class="embed-responsive-item card-img-top" src="@item.ContentURL" alt="Card image" allowfullscreen></iframe>
                 </div>
             }
-            else if (item.ContentURL != null && item.ContentType == "IMG")
+            else if (item.ContentFile != null && item.ContentType == "IMG")
             {
-                <object data="@item.ContentURL" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+                <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
+            }
+            else if (item.ContentFile != null && item.ContentType == "VID")
+            {
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item card-img-top" src="@item.ContentFile" alt="Card image" allowfullscreen></iframe>
+                </div>
             }
             <div class="card-body" id="card1_radio_body">
                 <h4 class="card-title"><em>@Html.ActionLink(item.Title, "Details", "Contents", new { id = item.ContentId })</em></h4>
