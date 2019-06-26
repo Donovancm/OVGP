@@ -63,11 +63,12 @@ namespace OVGPFinalv1.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Beheerder")]
         public IActionResult CreateOptions()
         {
             return View();
         }
-        
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> CreateWithURL([Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content)
         {
             if (ModelState.IsValid)
@@ -82,6 +83,7 @@ namespace OVGPFinalv1.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Beheerder")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
             [Bind("ContentId,Title,Text,PostedDate,NamePostedUser,ContentType,ContentURL,ContentFile,CommentsAllowed")] Content content, ContentViewModel contentViewModel)

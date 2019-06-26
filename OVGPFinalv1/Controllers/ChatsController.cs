@@ -27,6 +27,7 @@ namespace OVGPFinalv1.Controllers
         {
             return View(await _context.Chat.ToListAsync());
         }
+        [Authorize(Roles = "Beheerder")]
         public async Task<IActionResult> ChatGeschiedenis()
         {
             return View(await _context.Chat.ToListAsync());

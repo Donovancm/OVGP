@@ -23,7 +23,7 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContentType" class="control-label"></label>
+                <label asp-for="ContentType" class="control-label">Nieuws media type</label>
                 <select asp-for="ContentType" class="form-control">
                     <option value="IMG">IMG</option>
                     <option value="VID">VID</option>
@@ -31,13 +31,15 @@
                 <span asp-validation-for="ContentType" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-                <label asp-for="ContentURL" class="control-label"></label>
-                <input asp-for="ContentURL" class="form-control" />
-                <span asp-validation-for="ContentURL" class="text-danger"></span>
-            </div>*@
+                    <label asp-for="ContentURL" class="control-label"></label>
+                    <input asp-for="ContentURL" class="form-control" />
+                    <span asp-validation-for="ContentURL" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
-                <label asp-for="ContentFile" class="control-label"></label>
-                <input asp-for="ContentFile" type="file" class="filestyle">
+                <label asp-for="ContentFile" class="control-label">Nieuwsbestand</label>
+                <p>
+                    <input asp-for="ContentFile" type="file" class="filestyle">
+                </p>
                 <span asp-validation-for="ContentFile" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,28 +49,28 @@
     </div>
 </div>
 @*<h3>Aanmaken van nieuwsbrief</h3>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateNieuwsbrief" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label">Titel</label>
-                <p>
-                    <input asp-for="Title" class="form-control" />
-                </p>
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <textarea asp-for="Text" class="form-control"></textarea>
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Aanmaken nieuwsbrief" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateNieuwsbrief" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Titel</label>
+                    <p>
+                        <input asp-for="Title" class="form-control" />
+                    </p>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label"></label>
+                    <textarea asp-for="Text" class="form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Aanmaken nieuwsbrief" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
 
 <form>
     <button class="btn btn-grey m-right btn-sm" asp-action="Index">Terug naar nieuwspagina</button>

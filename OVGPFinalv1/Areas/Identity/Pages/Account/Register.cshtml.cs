@@ -78,6 +78,9 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             [Display(Name = "Bevestig wachtwoord")]
             [Compare("Password", ErrorMessage = "Komt niet overeen met de wachtwoord")]
             public string ConfirmPassword { get; set; }
+            [Phone]
+            [Display(Name = "Telefoonnummer")]
+            public string PhoneNumber { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -98,9 +101,12 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     Plaats = Input.Plaats,
                     UserName = Input.Email,
                     Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
                     Nieuwsbrief = Input.Nieuwsbrief,
                     //Voor nu true
+                    PhoneNumberConfirmed = true,
                     EmailConfirmed = true
+                    
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
@@ -120,7 +126,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     ///
                     await _userManager.AddToRoleAsync(user, "Lid");
                     //await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    return RedirectToPage("./Succesvol");
                 }
                 foreach (var error in result.Errors)
                 {

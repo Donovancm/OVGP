@@ -1,0 +1,23 @@
+﻿@page
+@model OVGPFinalv1.Areas.Identity.Pages.Account.SuccesvolModel
+@{
+    ViewData["Title"] = "Registratie succesvol";
+}
+@if (User.IsInRole("Beheerder"))
+{
+    <h3>Registratie succesvol</h3>
+    <div>
+        <p>
+            U heeft een registratie van een lid met succes afgeronden.
+        </p>
+        <form>
+            <button class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Volgende registratie lid</button>
+
+        </form>
+        <br />
+        <form>
+            <button class="btn btn-primary" asp-action="Index" asp-controller="Home">Terug naar de hoofdpagina</button>
+        </form>
+    </div>
+}
+

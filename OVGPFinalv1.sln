@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVGPFinalv1", "OVGPFinalv1\OVGPFinalv1.csproj", "{C7413DBF-71B5-4921-8A3D-3A1D159DEB17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OVGPFinalv1", "OVGPFinalv1\OVGPFinalv1.csproj", "{C7413DBF-71B5-4921-8A3D-3A1D159DEB17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
