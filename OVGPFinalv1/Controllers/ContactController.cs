@@ -37,9 +37,8 @@ namespace OVGPFinalv1.Controllers
                 {
                     FromAddresses = new List<EmailAddress> { FromAndToEmailAddress },
                     ToAddresses = new List<EmailAddress> { FromAndToEmailAddress },
-                    Content = $"Here is your message: Name: {model.Name}, " +
-                        $"Email: {model.Email}, Message: {model.Message}",
-                    Subject = "Contact Form - Basic Contact Form App"
+                    Content = $"{model.Message}",
+                    Subject = $"Contact formulier van {model.Name}, {model.Email} met het onderwerp: {model.Subject}"
                 };
 
                 EmailService.Send(msgToSend);

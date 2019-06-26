@@ -21,7 +21,7 @@ namespace OVGPFinalv1.Models
         [Display(Name = "Onderwerp")]
         public string Onderwerp { get; set; }
         [Required]
-        [Display(Name = "Beschrijving")]
+        [Display(Name = "Email inhoud")]
         public string Text { get; set; }
         [Display(Name = "Gepost op")]
         public DateTime PostedDate { get; set; }
