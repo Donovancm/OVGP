@@ -1,0 +1,86 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Adminbeheer";
+}
+
+@if (User.IsInRole("Beheerder"))
+    {
+        <h4>Nieuwe registratie lid </h4>
+        <form>
+            <button class="nav-link" id="nav-text" asp-area="Identity" asp-page="/Account/register" title="Manage">Register een nieuwe gebruiker</button>
+        </form>
+    }
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Bedrijf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].ContactPersoon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Adres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Plaats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.User)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bedrijf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPersoon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plaats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+
+                <td>
+
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    @*<a asp-page="./Details" asp-route-id="@item.Id">Details</a>*@
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

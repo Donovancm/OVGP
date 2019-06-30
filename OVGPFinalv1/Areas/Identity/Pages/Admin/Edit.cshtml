@@ -1,0 +1,86 @@
+﻿@page "{id}"
+@model OVGPFinalv1.Areas.Identity.Pages.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <p>
+                    <input asp-for="Username" class="form-control" disabled />
+                </p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Bedrijf"></label>
+                <input asp-for="Input.Bedrijf" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ContactPersoon"></label>
+                <input asp-for="Input.ContactPersoon" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Adres"></label>
+                <p>
+                    <input asp-for="Input.Adres" class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PostCode"></label>
+                <p>
+                    <input asp-for="Input.PostCode" class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Plaats"></label>
+                <p>
+                    <input asp-for="Input.Plaats" class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Nieuwsbrief" class="control-label"></label>
+                <select asp-for="Input.Nieuwsbrief" class="form-control">
+                    <option value="true">Ja</option>
+                    <option value="false">Nee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <div class="input-group">
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                    </div>
+                }
+                else
+                {
+                    <input asp-for="Input.Email" class="form-control" />
+                    @*<button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>*@
+                }
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Opslaan</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
