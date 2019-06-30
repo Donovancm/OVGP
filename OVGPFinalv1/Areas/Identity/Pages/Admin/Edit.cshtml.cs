@@ -37,6 +37,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             [Display(Name = "Bedrijfsnaam")]
             public string Bedrijf { get; set; }
             [Required]
+            [PersonalData]
+            [Display(Name = "KvK Nummer")]
+            public int KvKnummer { get; set; }
+            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Contact persoon")]
             public string ContactPersoon { get; set; }
@@ -61,6 +65,22 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            [PersonalData]
+            [UIHint("IsActive")]
+            [Display(Name = "Contributie betaald")]
+            public bool ContributieBetaald { get; set; }
+            [PersonalData]
+            [Display(Name = "Betaaldatum")]
+            public DateTime Betaaldatum { get; set; }
+            [PersonalData]
+            [Display(Name = "Vorige betaaldatum")]
+            public DateTime VorigeBetaalDatum { get; set; }
+            [PersonalData]
+            [Display(Name = "Betaald bedrag")]
+            public double BetaalBedrag { get; set; }
+            [PersonalData]
+            [Display(Name = "Bedrag te voldoen")]
+            public double BedragTeVoldoen { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -80,11 +100,17 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             Input = new InputModel
             {
                 Bedrijf = user.Bedrijf,
+                KvKnummer = user.KvKnummer,
                 ContactPersoon = user.ContactPersoon,
                 Adres = user.Adres,
                 PostCode = user.Postcode,
                 Plaats = user.Plaats,
                 Nieuwsbrief = user.Nieuwsbrief,
+                ContributieBetaald = user.ContributieBetaald,
+                Betaaldatum = user.Betaaldatum,
+                VorigeBetaalDatum = user.VorigeBetaalDatum,
+                BetaalBedrag = user.BetaalBedrag,
+                BedragTeVoldoen = user.BedragTeVoldoen,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -105,6 +131,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             {
                 user.Bedrijf = Input.Bedrijf;
             }
+            if (Input.KvKnummer != user.KvKnummer)
+            {
+                user.KvKnummer = Input.KvKnummer;
+            }
             if (Input.ContactPersoon != user.ContactPersoon)
             {
                 user.ContactPersoon = Input.ContactPersoon;
@@ -124,6 +154,26 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             if (Input.Nieuwsbrief != user.Nieuwsbrief)
             {
                 user.Nieuwsbrief = Input.Nieuwsbrief;
+            }
+            if (Input.ContributieBetaald != user.ContributieBetaald)
+            {
+                user.ContributieBetaald = Input.ContributieBetaald;
+            }
+            if (Input.Betaaldatum != user.Betaaldatum)
+            {
+                user.Betaaldatum = Input.Betaaldatum;
+            }
+            if (Input.VorigeBetaalDatum != user.VorigeBetaalDatum)
+            {
+                user.VorigeBetaalDatum = Input.VorigeBetaalDatum;
+            }
+            if (Input.BetaalBedrag != user.BetaalBedrag)
+            {
+                user.BetaalBedrag = Input.BetaalBedrag;
+            }
+            if (Input.BedragTeVoldoen != user.BedragTeVoldoen)
+            {
+                user.BedragTeVoldoen = Input.BedragTeVoldoen;
             }
             if (user == null)
             {

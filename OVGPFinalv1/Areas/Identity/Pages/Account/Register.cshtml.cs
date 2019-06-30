@@ -43,6 +43,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Full name")]
             public string Bedrijf { get; set; }
+            [Required(ErrorMessage = "KvK Nummer vereist")]
+            [PersonalData]
+            [Display(Name = "KvK Nummer")]
+            public int KvKnummer { get; set; }
             [Required(ErrorMessage = "Naam contact persoon vereist")]
             [DataType(DataType.Text)]
             [Display(Name = "Contact persoon")]
@@ -81,6 +85,26 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             [Phone]
             [Display(Name = "Telefoonnummer")]
             public string PhoneNumber { get; set; }
+
+            [UIHint("IsActive")]
+            [Display(Name = "Contributie betaald")]
+            public bool ContributieBetaald { get; set; }
+            [PersonalData]
+            [Display(Name = "Betaaldatum")]
+            [DataType(DataType.Date)]
+            public DateTime Betaaldatum { get; set; }
+            [PersonalData]
+            [Display(Name = "Vorige betaaldatum")]
+            [DataType(DataType.Date)]
+            public DateTime VorigeBetaalDatum { get; set; }
+            [PersonalData]
+            [Display(Name = "Betaald bedrag")]
+            [DataType(DataType.Currency)]
+            public double BetaalBedrag { get; set; }
+            [PersonalData]
+            [Display(Name = "Bedrag te voldoen")]
+            [DataType(DataType.Currency)]
+            public double BedragTeVoldoen { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -95,6 +119,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             {
                 var user = new Models.User {
                     Bedrijf = Input.Bedrijf,
+                    KvKnummer = Input.KvKnummer,
                     ContactPersoon = Input.ContactPersoon,
                     Adres = Input.Adres,
                     Postcode = Input.PostCode,
@@ -103,6 +128,11 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     PhoneNumber = Input.PhoneNumber,
                     Nieuwsbrief = Input.Nieuwsbrief,
+                    ContributieBetaald = Input.ContributieBetaald,
+                    Betaaldatum = Input.Betaaldatum,
+                    VorigeBetaalDatum = Input.VorigeBetaalDatum,
+                    BetaalBedrag = Input.BetaalBedrag,
+                    BedragTeVoldoen = Input.BedragTeVoldoen,
                     //Voor nu true
                     PhoneNumberConfirmed = true,
                     EmailConfirmed = true

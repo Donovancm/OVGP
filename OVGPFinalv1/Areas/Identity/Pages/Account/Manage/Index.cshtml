@@ -35,6 +35,10 @@
                 <input asp-for="Input.Bedrijf" class="form-control" />
             </div>
             <div class="form-group">
+                <label asp-for="Input.KvKnummer"></label>
+                <input asp-for="Input.KvKnummer" class="form-control" />
+            </div>
+            <div class="form-group">
                 <label asp-for="Input.ContactPersoon"></label>
                 <input asp-for="Input.ContactPersoon" class="form-control" />
             </div>
@@ -83,6 +87,30 @@
                 <label asp-for="Input.PhoneNumber"></label>
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <h4>Contributie Gegevens</h4>
+            <div class="form-group">
+                <label asp-for="Input.ContributieBetaald"></label>
+                <select asp-for="Input.ContributieBetaald" class="form-control" disabled>
+                    <option value="true">Ja</option>
+                    <option value="false">Nee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Betaaldatum"></label>
+                <input asp-for="Input.Betaaldatum" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.VorigeBetaalDatum"></label>
+                <input asp-for="Input.VorigeBetaalDatum" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BetaalBedrag"></label>
+                <input asp-for="Input.BetaalBedrag" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BedragTeVoldoen"></label>
+                <input asp-for="Input.BedragTeVoldoen" class="form-control" disabled/>
             </div>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Opslaan</button>
         </form>

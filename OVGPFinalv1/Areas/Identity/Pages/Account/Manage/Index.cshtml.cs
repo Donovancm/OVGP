@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -43,6 +44,13 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             [DataType(DataType.Text)]
             [Display(Name = "Bedrijfsnaam")]
             public string Bedrijf { get; set; }
+
+            [Required]
+            [PersonalData]
+            [Display(Name = "KvK Nummer")]
+            public int KvKnummer { get; set; }
+
+
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Contact persoon")]
@@ -68,6 +76,26 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [PersonalData]
+            [Display(Name = "Contributie betaald")]
+            public bool ContributieBetaald { get; set; }
+            [PersonalData]
+            [Display(Name = "Betaaldatum")]
+            [DataType(DataType.Date)]
+            public DateTime Betaaldatum { get; set; }
+            [PersonalData]
+            [Display(Name = "Vorige betaaldatum")]
+            [DataType(DataType.Date)]
+            public DateTime VorigeBetaalDatum { get; set; }
+            [PersonalData]
+            [DataType(DataType.Currency)]
+            [Display(Name = "Betaald bedrag")]
+            public double BetaalBedrag { get; set; }
+            [PersonalData]
+            [DataType(DataType.Currency)]
+            [Display(Name = "Bedrag te voldoen")]
+            public double BedragTeVoldoen { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -87,11 +115,17 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 Bedrijf = user.Bedrijf,
+                KvKnummer = user.KvKnummer,
                 ContactPersoon = user.ContactPersoon,
                 Adres = user.Adres,
                 PostCode = user.Postcode,
                 Plaats = user.Plaats,
                 Nieuwsbrief = user.Nieuwsbrief,
+                ContributieBetaald = user.ContributieBetaald,
+                Betaaldatum = user.Betaaldatum,
+                VorigeBetaalDatum = user.VorigeBetaalDatum,
+                BetaalBedrag = user.BetaalBedrag,
+                BedragTeVoldoen = user.BedragTeVoldoen,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -112,6 +146,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             {
                 user.Bedrijf = Input.Bedrijf;
             }
+            if (Input.KvKnummer != user.KvKnummer)
+            {
+                user.KvKnummer = Input.KvKnummer;
+            }
             if (Input.ContactPersoon != user.ContactPersoon)
             {
                 user.ContactPersoon = Input.ContactPersoon;
@@ -131,6 +169,26 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account.Manage
             if (Input.Nieuwsbrief != user.Nieuwsbrief)
             {
                 user.Nieuwsbrief = Input.Nieuwsbrief;
+            }
+            if (Input.ContributieBetaald != user.ContributieBetaald)
+            {
+                user.ContributieBetaald = Input.ContributieBetaald;
+            }
+            if (Input.Betaaldatum != user.Betaaldatum)
+            {
+                user.Betaaldatum = Input.Betaaldatum;
+            }
+            if (Input.VorigeBetaalDatum != user.VorigeBetaalDatum)
+            {
+                user.VorigeBetaalDatum = Input.VorigeBetaalDatum;
+            }
+            if (Input.BetaalBedrag != user.BetaalBedrag)
+            {
+                user.BetaalBedrag = Input.BetaalBedrag;
+            }
+            if (Input.BedragTeVoldoen != user.BedragTeVoldoen)
+            {
+                user.BedragTeVoldoen = Input.BedragTeVoldoen;
             }
             if (user == null)
             {

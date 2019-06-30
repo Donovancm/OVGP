@@ -6,15 +6,18 @@
 }
 
 @if (User.IsInRole("Beheerder"))
-    {
-        <h4>Nieuwe registratie lid </h4>
-        <form>
-            <button class="nav-link" id="nav-text" asp-area="Identity" asp-page="/Account/register" title="Manage">Register een nieuwe gebruiker</button>
-        </form>
-    }
+{
+    <h4>Nieuwe registratie lid </h4>
+    <form>
+        <button class="nav-link" id="nav-text" asp-area="Identity" asp-page="/Account/register" title="Manage">Register een nieuwe gebruiker</button>
+    </form>
+}
 <table class="table">
     <thead>
         <tr>
+            <th>
+                Admin control
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.User[0].UserName)
             </th>
@@ -38,14 +41,34 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.User[0].PhoneNumber)
-            </th>>
-
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].ContributieBetaald)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].Betaaldatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].VorigeBetaalDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].BetaalBedrag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User[0].BedragTeVoldoen)
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.User)
         {
             <tr>
+                <td>
+
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                    @*<a asp-page="./Details" asp-route-id="@item.Id">Details</a>*@
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
@@ -72,10 +95,19 @@
                 </td>
 
                 <td>
-
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                    @*<a asp-page="./Details" asp-route-id="@item.Id">Details</a>*@
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    @Html.DisplayFor(modelItem => item.ContributieBetaald)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Betaaldatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VorigeBetaalDatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BetaalBedrag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BedragTeVoldoen)
                 </td>
             </tr>
         }

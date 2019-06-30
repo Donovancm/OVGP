@@ -72,6 +72,30 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <h4>Contributie Gegevens</h4>
+            <div class="form-group">
+                <label asp-for="Input.ContributieBetaald"></label>
+                <select asp-for="Input.ContributieBetaald" class="form-control">
+                    <option value="true">Ja</option>
+                    <option value="false">Nee</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Betaaldatum"></label>
+                <input asp-for="Input.Betaaldatum" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.VorigeBetaalDatum"></label>
+                <input asp-for="Input.VorigeBetaalDatum" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BetaalBedrag"></label>
+                <input asp-for="Input.BetaalBedrag" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.BedragTeVoldoen"></label>
+                <input asp-for="Input.BedragTeVoldoen" class="form-control" />
+            </div>
             <button type="submit" class="btn btn-primary">Registeren</button>
         </form>
     </div>
