@@ -29,7 +29,7 @@
                                 @if (User.IsInRole("Beheerder"))
                                 {
                                     <form>
-                                        <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-action="Details" asp-route-id="@item.ChatId">Details</button>
+                                        <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-action="Edit" asp-route-id="@item.ChatId">Edit</button>
                                         <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-action="delete" asp-route-id="@item.ChatId">Delete</button>
                                     </form>
                                 }
