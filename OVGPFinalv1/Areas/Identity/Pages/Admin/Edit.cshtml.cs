@@ -208,7 +208,7 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             }
             await _userManager.UpdateAsync(user);
             StatusMessage = "Your profile has been updated";
-            return RedirectToPage();
+            return RedirectToPage("./Index");
         }
         //[BindProperty]
         //public User User { get; set; }
