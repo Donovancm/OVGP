@@ -44,8 +44,8 @@
                             <p><strong>Contributiebetaald: </strong>@Html.DisplayFor(modelItem => item.ContributieBetaald)</p>
                             <p><strong>Betaaldatum: </strong>@Html.DisplayFor(modelItem => item.Betaaldatum)</p>
                             <p><strong>Vorige betaaldatum: </strong>@Html.DisplayFor(modelItem => item.VorigeBetaalDatum)</p>
-                            <p><strong>Betaald bedrag: </strong>@Html.DisplayFor(modelItem => item.BetaalBedrag)</p>
-                            <p><strong>Nog te betalen: </strong>@Html.DisplayFor(modelItem => item.BedragTeVoldoen)</p>
+                            <p><strong>Betaald bedrag: </strong>€@Html.DisplayFor(modelItem => item.BetaalBedrag)</p>
+                            <p><strong>Nog te betalen: </strong>€@Html.DisplayFor(modelItem => item.BedragTeVoldoen)</p>
                             <form>
                                 <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-page="./Edit" asp-route-id="@item.Id">Edit</button>
                                 <button class="btn btn-grey m-right btn-sm" style="margin-top: 4px;" asp-page="./Delete" asp-route-id="@item.Id">Delete</button>

@@ -100,11 +100,11 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Account
             [PersonalData]
             [Display(Name = "Betaald bedrag")]
             [DataType(DataType.Currency)]
-            public double BetaalBedrag { get; set; }
+            public decimal BetaalBedrag { get; set; }
             [PersonalData]
             [Display(Name = "Bedrag te voldoen")]
             [DataType(DataType.Currency)]
-            public double BedragTeVoldoen { get; set; }
+            public decimal BedragTeVoldoen { get; set; }
         }
 
         public void OnGet(string returnUrl = null)

@@ -80,10 +80,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             public DateTime VorigeBetaalDatum { get; set; }
             [PersonalData]
             [Display(Name = "Betaald bedrag")]
-            public double BetaalBedrag { get; set; }
+            public decimal BetaalBedrag { get; set; }
             [PersonalData]
             [Display(Name = "Bedrag te voldoen")]
-            public double BedragTeVoldoen { get; set; }
+            public decimal BedragTeVoldoen { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync(string id)

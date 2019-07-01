@@ -42,13 +42,11 @@ namespace OVGPFinalv1.Models
         [DataType(DataType.Date)]
         public DateTime VorigeBetaalDatum { get; set; }
         [PersonalData]
-        [DataType(DataType.Currency)]
         [Column(TypeName = "decimal(18, 2)")]
-        public double BetaalBedrag { get; set; }
-        [DataType(DataType.Currency)]
+        public decimal BetaalBedrag { get; set; }
         [PersonalData]
         [Column(TypeName = "decimal(18, 2)")]
-        public double BedragTeVoldoen { get; set; }
+        public decimal BedragTeVoldoen { get; set; }
 
         ///Contributiegegevens
         ///-Contributue betaald bool
