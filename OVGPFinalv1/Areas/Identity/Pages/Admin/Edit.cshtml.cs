@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,6 +13,7 @@ using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1.Areas.Identity.Pages.Admin
 {
+    [Authorize(Roles = "Beheerder")]
     public class EditModel : BasePageModel
     {
         private readonly UserManager<Models.User> _userManager;
