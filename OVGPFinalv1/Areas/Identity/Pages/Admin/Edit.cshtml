@@ -4,10 +4,7 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h2>Edit</h2>
-
-<h4>User</h4>
+<h4>Gebruiker Aanpassen</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -106,9 +103,9 @@
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+<form>
+    <button class="btn btn-grey m-right btn-sm top-space" asp-page="./Index">Terug</button>
+</form>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

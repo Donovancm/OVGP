@@ -17,6 +17,10 @@ html {
     width: 100%;
 }
 
+h4, h5, h6 {
+    color: #007bff;
+}
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -310,6 +314,9 @@ hr.style1 {
     padding-left: 0px;
     padding-right: 0px;
     line-height: 1.3;
+}
+
+.card-padding {
     margin: 10px 10px 10px 10px;
 }
 
@@ -432,3 +439,7 @@ body {
     margin-bottom: 15px;
 }
 
+.test {
+    font-size: 18px;
+    margin-left: 18px;
+}

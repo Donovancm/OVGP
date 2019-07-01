@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             @foreach (var item in Model.Reverse())
             {
-            <div class="card col-md-5 bg-light" id="btn_card1_card">
+            <div class="card card-padding col-md-5 bg-light" id="btn_card1_card">
                 @if (item.ContentURL == null)
                 {
                     <object data="@item.ContentFile" class="embed-responsive-item card-img-top card-img" alt="Card image"></object>
