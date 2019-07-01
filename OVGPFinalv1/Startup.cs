@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OVGPFinalv1.Models.Email_Models;
 using OVGPFinalv1.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Globalization;
 
 namespace OVGPFinalv1
 {
@@ -90,6 +91,11 @@ namespace OVGPFinalv1
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            var cultureInfo = new CultureInfo("en-US");
+            cultureInfo.NumberFormat.CurrencySymbol = "€";
+
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
