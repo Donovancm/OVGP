@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,9 +43,11 @@ namespace OVGPFinalv1.Models
         public DateTime VorigeBetaalDatum { get; set; }
         [PersonalData]
         [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 2)")]
         public double BetaalBedrag { get; set; }
         [DataType(DataType.Currency)]
         [PersonalData]
+        [Column(TypeName = "decimal(18, 2)")]
         public double BedragTeVoldoen { get; set; }
 
         ///Contributiegegevens

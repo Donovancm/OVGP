@@ -12,10 +12,11 @@ using OVGPFinalv1.Models;
 
 namespace OVGPFinalv1.Areas.Identity.Pages.Admin
 {
-    public class EditModel : PageModel
+    public class EditModel : BasePageModel
     {
         private readonly UserManager<Models.User> _userManager;
-        public EditModel(UserManager<Models.User> userManager)
+        public EditModel(ApplicationDbContext context,
+            UserManager<Models.User> userManager) : base(context, userManager)
         {
             _userManager = userManager;
         }
@@ -83,9 +84,10 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             public double BedragTeVoldoen { get; set; }
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string id)
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await Context.User.FirstOrDefaultAsync(
+                                                 m => m.Id == id);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -120,13 +122,14 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            var user = await _userManager.GetUserAsync(User);
+            var user = await Context.User.FirstOrDefaultAsync(
+                                                 m => m.Id == id);
             if (Input.Bedrijf != user.Bedrijf)
             {
                 user.Bedrijf = Input.Bedrijf;
