@@ -47,12 +47,5 @@ namespace OVGPFinalv1.Models
         [PersonalData]
         [Column(TypeName = "decimal(18, 2)")]
         public decimal BedragTeVoldoen { get; set; }
-
-        ///Contributiegegevens
-        ///-Contributue betaald bool
-        ///-Betaaldatum Jaar-maand-dag
-        ///
-        ///Betaald bedrag
-        ///Bedrag te voldoen
     }
 }

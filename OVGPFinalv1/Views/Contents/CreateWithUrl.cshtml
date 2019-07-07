@@ -13,12 +13,10 @@
                 <p>
                     <input asp-for="Title" class="form-control" />
                 </p>
-                @*<span asp-validation-for="Title" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="Text" class="control-label">Beschrijving</label>
                 <textarea asp-for="Text" class="form-control"></textarea>
-                @*<span asp-validation-for="Text" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="ContentType" class="control-label">Nieuws media type</label>
@@ -26,7 +24,6 @@
                     <option value="IMG">IMG</option>
                     <option value="VID">VID</option>
                 </select>
-                @*<span asp-validation-for="ContentType" class="text-danger"></span>*@
             </div>
             <div class="form-group">
                 <label asp-for="ContentURL" class="control-label">Nieuws media URL</label>

@@ -48,12 +48,7 @@ namespace OVGPFinalv1
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             EmailServerConfiguration config = new EmailServerConfiguration
             {
-                //Testen met echte email werkt, nu een email maken
-                //Hotmail ....
-                //Configuration.GetSection("UserSettings")["UserEmail"],
-                //SmtpPassword = "920PLM.AzE.bdc", //<---
-                //SmtpServer = "smtp.live.com", //
-                //SmtpUsername = "ovgpictlab@hotmail.com" //<---
+                //Zie appsetting.json
                 SmtpPassword = Configuration.GetSection("EmailSettings")["SmtpPassword"], //<---
                 SmtpServer = Configuration.GetSection("EmailSettings")["SmtpServer"], //
                 SmtpUsername = Configuration.GetSection("EmailSettings")["SmtpUsername"], //<---
@@ -61,10 +56,7 @@ namespace OVGPFinalv1
 
             EmailAddress FromEmailAddress = new EmailAddress
             {
-                //Placeholder van wie zetten
-                //Hotmail ...
-                //Address = "ovgpictlab@hotmail.com",//<-----
-                //Name = "ICTlab"
+                //Zie appsetting.json
                 Address = Configuration.GetSection("EmailSettings")["Adress"],
                 Name = Configuration.GetSection("EmailSettings")["Name"]
             };

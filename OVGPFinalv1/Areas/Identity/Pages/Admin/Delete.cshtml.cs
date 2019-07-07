@@ -19,7 +19,9 @@ namespace OVGPFinalv1.Areas.Identity.Pages.Admin
         {
         }
         [BindProperty]
+#pragma warning disable CS0108 // 'DeleteModel.User' hides inherited member 'PageModel.User'. Use the new keyword if hiding was intended.
         public User User { get; set; }
+#pragma warning restore CS0108 // 'DeleteModel.User' hides inherited member 'PageModel.User'. Use the new keyword if hiding was intended.
         public async Task<IActionResult> OnGetAsync(string id)
         {
             User = await Context.User.FirstOrDefaultAsync(

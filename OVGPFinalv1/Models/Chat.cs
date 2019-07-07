@@ -13,7 +13,6 @@ namespace OVGPFinalv1.Models
         public Chat()
         {
             Posted = DateTime.Now;
-            //this.NamePostedUser = "Name of the logged in user"
         }
         public int ChatId { get; set; }
         [Display(Name = "Naam")]
